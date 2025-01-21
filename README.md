@@ -12,7 +12,12 @@ Se implementaría un sistema de juego de simulación de cuidado de una mascota v
 
 ### Partes del sistema
 #### Sensores
+1. **Sensor Ultrasonido:** Detectaría proximidad y movimiento, el cual apoyaría el cambio de estados de la mascota dependiendo de si el usuario está manipulando el sistema, o esta en reposo.
+2. **Sensor de Luz:** Proporcionaría una funcionalidad de ciclos diurnos y nocturnos, que influirían en la variacion de las necesidades de los estados y necesidades de la mascota, por ejemplo, para que cuando esté en un ambiente a oscuras, la mascota se duerma automáticamente y no surja la necesidad de comer.
+
 #### Botones
+1. **Reinicio:** Restauraría el sistema a sus valores por defecto.
+2. **Botones de interacción:** Botones destinados para que el usuario ejecute determinadas acciones directas con la mascota, como dar de comer, y limpiar.
 
 ### Visualización de la mascota
 #### Matriz de puntos 8x8
@@ -22,4 +27,15 @@ En ésta matriz se configuraria las imágenes de la mascota, las cuales cambiar�
 Proporcionaría un complemento a la visualización principal, donde se configuraría cada estado de la mascota, con un determinado nivel, o puntaje, donde tendría diferentes rangos que activarían las animaciones a la necesidad que requiera la mascota. 
 
 ### Estados de la mascota
+#### Hambre
+Generado a lo largo del día, con variaciones conforme pasa el tiempo. Dichas variaciones quedarían en pausa mientras la mascota duerme.
+#### Sueño
+Estado que se generaría luego de un tiempo largo con el sistema activo, el cual se solucionaría dejando el sistema en un ambiente de baja iluminación, dejando que la mascota duerma y recargue energías.
+#### Durmiendo
+Se daría solamente en un ambiente de baja iluminación, o en la noche, el cual dejaría el sistema en un estado de reposo, donde el único cambio que habría sería la recarga de energía de la mascota.
+#### Energético
+Generado al tener nivel o puntaje alto de energía, el cual se solucionaría jugando con la mascota
+#### Feliz
+#### Triste
+
 ### Interacciones del usuario
