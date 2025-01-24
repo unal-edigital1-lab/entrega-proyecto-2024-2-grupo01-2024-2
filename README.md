@@ -2,10 +2,16 @@
 # Entrega 1 del proyecto WP01
 
 ## Introducción
+Como proyecto para la clase de Electrónica Digital I se decidió hacer un tamagotchi por medio de la tarjeta FPGA, el cual con funciones y variables definidas tendría el potencial no solo para aplicar temas vistos en clase, sino tambien aprender del uso de más elementos que se usen en proyectos de electrónica; con la finalidad de obtener un elemento intuitivo para cualquier persona que intente manipularlo, mientras que para los que realizamos el proyecto sea una profundización práctica de la temática de clase.
 
 ## Objetivos
 ### General
+Realizar un sistema de entretenimiento inspirado en los "tamagotchi", el cual consiste en el cuidado y manutención de una mascota virtual.
+
 ### Específicos
+- **a)** Aplicar conocimientos adquiridos de electrónica digital para la correcta implementación de las funciones que se asignen en el sistema.
+- **b)** Definir métodos para facilitar el uso del sistema con una interfaz intuitiva para el usuario.
+- **c)** Complementar las funciones del sistema con elementos visuales para un uso más interactivo.
 
 ## Descripción del Sistema
 Se implementaría un sistema de juego de simulación de cuidado de una mascota virtual, más conocido como "Tamagotchi", en el que se emularían diferentes estados de dicha mascota, y el usuario interactuaría con el sistema para mantener a su mascota en buen estado.
@@ -34,8 +40,11 @@ Estado que se generaría luego de un tiempo largo con el sistema activo, el cual
 #### Durmiendo
 Se daría solamente en un ambiente de baja iluminación, o en la noche, el cual dejaría el sistema en un estado de reposo, donde el único cambio que habría sería la recarga de energía de la mascota.
 #### Energético
-Generado al tener nivel o puntaje alto de energía, el cual se solucionaría jugando con la mascota
+Generado al tener nivel o puntaje alto de energía, el cual se solucionaría jugando con la mascota.
 #### Feliz
+Indicaría que la mascota está a gusto y no requiere de ningun tipo de cuidado o atención en el momento.
 #### Triste
+Estado que se daría luego de cierto tiempo en que la mascota no reciba ninguna atención luego de requerir una necesitad como comida o dormir.
 
 ### Interacciones del usuario
+Se definirían botones y acciones captadas por sensores que recibiría el sistema, e interpretaría para ejecutar funciones definidas en el sistema para que se dén interacciones entre la mascota y el usuario.
