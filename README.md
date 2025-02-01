@@ -48,3 +48,5 @@ Estado que se daría luego de cierto tiempo en que la mascota no reciba ninguna 
 
 ### Interacciones del usuario
 Se definirían botones y acciones captadas por sensores que recibiría el sistema, e interpretaría para ejecutar funciones definidas en el sistema para que se dén interacciones entre la mascota y el usuario.
+
+### Arquitectura del sistema
