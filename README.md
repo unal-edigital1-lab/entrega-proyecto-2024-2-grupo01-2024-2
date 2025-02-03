@@ -50,3 +50,7 @@ Estado que se daría luego de cierto tiempo en que la mascota no reciba ninguna 
 Se definirían botones y acciones captadas por sensores que recibiría el sistema, e interpretaría para ejecutar funciones definidas en el sistema para que se dén interacciones entre la mascota y el usuario.
 
 ### Arquitectura del sistema
+
+#### Diagrama de caja negra
+
+![TamagotchiCN](https://github.com/user-attachments/assets/a02d9bc4-76aa-4778-aab9-fff992520077)
