@@ -56,7 +56,7 @@ Se definirían botones y acciones captadas por sensores que recibiría el sistem
 ![TamagotchiCN](https://github.com/user-attachments/assets/a02d9bc4-76aa-4778-aab9-fff992520077)
 
 
-## plan detrabajo acordado 
+## Plan de trabajo acordado 
 #### Semana 1 
 1. Driver 8x8 matrix con Max7219 SPI
 2. Diver ultrasonido
@@ -65,4 +65,4 @@ Se definirían botones y acciones captadas por sensores que recibiría el sistem
 2. Infrarrojo
 #### Semana 3 
 1. Integración
-2.  
+2. Pruebas
