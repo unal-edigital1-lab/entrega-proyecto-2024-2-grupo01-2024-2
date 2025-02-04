@@ -58,8 +58,8 @@ Se definirían botones y acciones captadas por sensores que recibiría el sistem
 
 ## Plan de trabajo acordado 
 #### Semana 1 
-1. Driver 8x8 matrix con Max7219 SPI
-2. Diver ultrasonido
+1. Driver 8x8 matrix con Max7219 SPI, https://www.alldatasheet.com/datasheet-pdf/view/73745/MAXIM/MAX7219.html     y     https://github.com/unal-edigital1/2024-2/blob/master/labs/buses/SPI/spi.md
+2. Diver ultrasonido, https://leantec.es/wp-content/uploads/2019/06/Leantec.ES-HC-SR04.pdf
 #### Semana 2
 1. FSM
 2. Infrarrojo
