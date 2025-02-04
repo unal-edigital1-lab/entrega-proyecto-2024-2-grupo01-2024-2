@@ -54,3 +54,15 @@ Se definirían botones y acciones captadas por sensores que recibiría el sistem
 #### Diagrama de caja negra
 
 ![TamagotchiCN](https://github.com/user-attachments/assets/a02d9bc4-76aa-4778-aab9-fff992520077)
+
+
+## plan detrabajo acordado 
+#### Semana 1 
+1. Driver 8x8 matrix con Max7219 SPI
+2. Diver ultrasonido
+#### Semana 2
+1. FSM
+2. Infrarrojo
+#### Semana 3 
+1. Integración
+2.  
