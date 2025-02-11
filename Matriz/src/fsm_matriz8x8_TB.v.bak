@@ -1,0 +1,63 @@
+module fsm_matriz8x8 (
+	input clk,                // Reloj del sistema
+   input reset,              // Señal de reset
+   input [1:0] state,      // Datos de entrada para enviar
+	output  mosi,               // Master Out Slave In
+   output  sclk,          // Reloj SPI
+   output  cs            // Chip Select
+
+  
+);
+
+
+   reg [1:0] state2;
+   reg [7:0] data_in;
+   reg start;
+   wire [7:0] data_out;
+   wire busy;
+   wire avail;
+   reg [7:0] data_array [0:3];  // Array de datos a enviar
+   reg [1:0] index;  // Índice del array de datos
+   wire [15:0] div_factor = 25000;  // Factor de división fijo
+
+	spi_master spi (
+       .clk(clk),
+       .reset(~reset),
+       .data_in(data_in),
+       .start(start),
+       .div_factor(div_factor),
+       .miso(1'b0),  // Asumiendo no se recibe data de SPI
+       .mosi(mosi),
+       .sclk(sclk),
+       .cs(cs),
+       .data_out(data_out),
+       .busy(busy),
+       .avail(avail)
+   );
+
+   always @(posedge clk ) begin
+       if (~reset) begin
+           state2 <= 0;
+           start <= 0;
+           index <= 0;
+       end else begin
+           case(state2)
+               0: begin  // IDLE
+                   if (!busy && index < 4) begin
+                       data_in <= data_array[index];
+                       data_in <= index<<3;
+                       start <= 1;
+                       state2 <= 1;
+                   end
+               end
+               1: begin  // SEND
+                   if (avail) begin
+                       start <= 0;
+                       index <= index + 1;
+                       state2 <= 0;  // Vuelve a IDLE
+                   end
+               end
+           endcase
+       end
+   end
+endmodule
