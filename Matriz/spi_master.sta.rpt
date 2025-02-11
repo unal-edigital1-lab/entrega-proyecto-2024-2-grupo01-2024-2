@@ -1,0 +1,1187 @@
+Timing Analyzer report for spi_master
+Tue May 28 11:03:30 2024
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow 1200mV 85C Model Fmax Summary
+  6. Timing Closure Recommendations
+  7. Slow 1200mV 85C Model Setup Summary
+  8. Slow 1200mV 85C Model Hold Summary
+  9. Slow 1200mV 85C Model Recovery Summary
+ 10. Slow 1200mV 85C Model Removal Summary
+ 11. Slow 1200mV 85C Model Minimum Pulse Width Summary
+ 12. Slow 1200mV 85C Model Setup: 'clk'
+ 13. Slow 1200mV 85C Model Hold: 'clk'
+ 14. Slow 1200mV 85C Model Metastability Summary
+ 15. Slow 1200mV 0C Model Fmax Summary
+ 16. Slow 1200mV 0C Model Setup Summary
+ 17. Slow 1200mV 0C Model Hold Summary
+ 18. Slow 1200mV 0C Model Recovery Summary
+ 19. Slow 1200mV 0C Model Removal Summary
+ 20. Slow 1200mV 0C Model Minimum Pulse Width Summary
+ 21. Slow 1200mV 0C Model Setup: 'clk'
+ 22. Slow 1200mV 0C Model Hold: 'clk'
+ 23. Slow 1200mV 0C Model Metastability Summary
+ 24. Fast 1200mV 0C Model Setup Summary
+ 25. Fast 1200mV 0C Model Hold Summary
+ 26. Fast 1200mV 0C Model Recovery Summary
+ 27. Fast 1200mV 0C Model Removal Summary
+ 28. Fast 1200mV 0C Model Minimum Pulse Width Summary
+ 29. Fast 1200mV 0C Model Setup: 'clk'
+ 30. Fast 1200mV 0C Model Hold: 'clk'
+ 31. Fast 1200mV 0C Model Metastability Summary
+ 32. Multicorner Timing Analysis Summary
+ 33. Board Trace Model Assignments
+ 34. Input Transition Times
+ 35. Signal Integrity Metrics (Slow 1200mv 0c Model)
+ 36. Signal Integrity Metrics (Slow 1200mv 85c Model)
+ 37. Signal Integrity Metrics (Fast 1200mv 0c Model)
+ 38. Setup Transfers
+ 39. Hold Transfers
+ 40. Report TCCS
+ 41. Report RSKM
+ 42. Unconstrained Paths Summary
+ 43. Clock Status Summary
+ 44. Unconstrained Input Ports
+ 45. Unconstrained Output Ports
+ 46. Unconstrained Input Ports
+ 47. Unconstrained Output Ports
+ 48. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-----------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                     ;
++-----------------------+-----------------------------------------------------+
+; Quartus Prime Version ; Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                              ;
+; Revision Name         ; spi_master                                          ;
+; Device Family         ; Cyclone IV E                                        ;
+; Device Name           ; EP4CE6E22C8                                         ;
+; Timing Models         ; Final                                               ;
+; Delay Model           ; Combined                                            ;
+; Rise/Fall Delays      ; Enabled                                             ;
++-----------------------+-----------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.01        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.6%      ;
+;     Processors 3-4         ;   0.4%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++--------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 217.63 MHz ; 217.63 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
+----------------------------------
+; Timing Closure Recommendations ;
+----------------------------------
+HTML report is unavailable in plain text report export.
+
+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++-------+--------+--------------------+
+; Clock ; Slack  ; End Point TNS      ;
++-------+--------+--------------------+
+; clk   ; -3.595 ; -137.470           ;
++-------+--------+--------------------+
+
+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; clk   ; 0.452 ; 0.000              ;
++-------+-------+--------------------+
+
+
+------------------------------------------
+; Slow 1200mV 85C Model Recovery Summary ;
+------------------------------------------
+No paths to report.
+
+
+-----------------------------------------
+; Slow 1200mV 85C Model Removal Summary ;
+-----------------------------------------
+No paths to report.
+
+
++---------------------------------------------------+
+; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; clk   ; -3.000 ; -83.298                          ;
++-------+--------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clk'                                                                                                        ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                    ; To Node                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.595 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.512      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.548 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.465      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.420 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.337      ;
+; -3.414 ; spi_master:spi|clk_count[0]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.331      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.410 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.327      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.368 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.285      ;
+; -3.367 ; spi_master:spi|clk_count[3]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.284      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.083     ; 4.235      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.083     ; 4.235      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.272 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.189      ;
+; -3.270 ; spi_master:spi|clk_count[3]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.083     ; 4.188      ;
+; -3.270 ; spi_master:spi|clk_count[3]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.083     ; 4.188      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.253 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.170      ;
+; -3.239 ; spi_master:spi|clk_count[7]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.156      ;
+; -3.229 ; spi_master:spi|clk_count[9]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.146      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.209 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.126      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.197 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.114      ;
+; -3.187 ; spi_master:spi|clk_count[2]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.104      ;
+; -3.142 ; spi_master:spi|clk_count[7]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.083     ; 4.060      ;
+; -3.142 ; spi_master:spi|clk_count[7]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.083     ; 4.060      ;
+; -3.132 ; spi_master:spi|clk_count[9]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.083     ; 4.050      ;
+; -3.132 ; spi_master:spi|clk_count[9]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.083     ; 4.050      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.115 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.032      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.111 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.028      ;
+; -3.091 ; spi_master:spi|clk_count[5]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 4.008      ;
+; -3.090 ; spi_master:spi|clk_count[2]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.083     ; 4.008      ;
+; -3.090 ; spi_master:spi|clk_count[2]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.083     ; 4.008      ;
+; -3.072 ; spi_master:spi|clk_count[1]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.989      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
+; -3.069 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.084     ; 3.986      ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Hold: 'clk'                                                                                                         ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                    ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.452 ; spi_master:spi|cs            ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|mosi          ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[0]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|sclk          ; spi_master:spi|sclk          ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|bit_count[3]  ; spi_master:spi|bit_count[3]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|bit_count[2]  ; spi_master:spi|bit_count[2]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; spi_master:spi|bit_count[1]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; sendByte                     ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; state_send.00000000011       ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.452 ; state_send.00000000010       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.082      ; 0.746      ;
+; 0.453 ; mem_index[0]                 ; mem_index[0]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.453 ; mem_index[3]                 ; mem_index[3]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.453 ; mem_index[4]                 ; mem_index[4]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.453 ; mem_index[2]                 ; mem_index[2]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.453 ; mem_index[1]                 ; mem_index[1]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.453 ; mem_index[5]                 ; mem_index[5]                 ; clk          ; clk         ; 0.000        ; 0.081      ; 0.746      ;
+; 0.454 ; start                        ; start                        ; clk          ; clk         ; 0.000        ; 0.080      ; 0.746      ;
+; 0.499 ; spi_master:spi|shift_reg[5]  ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.793      ;
+; 0.499 ; state_send.00000000000       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.082      ; 0.793      ;
+; 0.502 ; spi_master:spi|shift_reg[3]  ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.796      ;
+; 0.696 ; spi_master:spi|active        ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.082      ; 0.990      ;
+; 0.738 ; spi_master:spi|shift_reg[4]  ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.032      ;
+; 0.739 ; spi_master:spi|shift_reg[2]  ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.033      ;
+; 0.739 ; spi_master:spi|shift_reg[1]  ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.033      ;
+; 0.741 ; spi_master:spi|shift_reg[6]  ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.035      ;
+; 0.743 ; spi_master:spi|shift_reg[7]  ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.082      ; 1.037      ;
+; 0.743 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.037      ;
+; 0.753 ; state_send.00000000001       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.082      ; 1.047      ;
+; 0.761 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.054      ;
+; 0.762 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.055      ;
+; 0.762 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.055      ;
+; 0.763 ; spi_master:spi|clk_count[15] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.056      ;
+; 0.763 ; state_send.00000000011       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.082      ; 1.057      ;
+; 0.764 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.057      ;
+; 0.764 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.057      ;
+; 0.765 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.058      ;
+; 0.765 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.058      ;
+; 0.766 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.059      ;
+; 0.766 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.059      ;
+; 0.766 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.059      ;
+; 0.777 ; state_send.00000000001       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.082      ; 1.071      ;
+; 0.786 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[0]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.079      ;
+; 0.815 ; spi_master:spi|active        ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.109      ;
+; 0.836 ; spi_master:spi|active        ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.130      ;
+; 0.836 ; spi_master:spi|active        ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.130      ;
+; 0.837 ; spi_master:spi|active        ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.131      ;
+; 0.838 ; spi_master:spi|active        ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.132      ;
+; 0.838 ; spi_master:spi|active        ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.132      ;
+; 0.904 ; state_send.00000000000       ; state_send.00000000001       ; clk          ; clk         ; 0.000        ; 0.082      ; 1.198      ;
+; 0.978 ; mem_index[3]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.271      ;
+; 0.985 ; mem_index[3]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.278      ;
+; 0.988 ; mem_index[3]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.281      ;
+; 0.988 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.282      ;
+; 0.989 ; mem_index[3]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.282      ;
+; 0.993 ; mem_index[3]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.286      ;
+; 0.993 ; mem_index[3]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.286      ;
+; 0.997 ; data_in[6]                   ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.290      ;
+; 0.998 ; data_in[7]                   ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.291      ;
+; 1.035 ; data_in[2]                   ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.328      ;
+; 1.038 ; spi_master:spi|active        ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.082      ; 1.332      ;
+; 1.043 ; data_in[3]                   ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.336      ;
+; 1.047 ; spi_master:spi|active        ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.082      ; 1.341      ;
+; 1.067 ; start                        ; spi_master:spi|busy          ; clk          ; clk         ; -0.500       ; 0.035      ; 0.834      ;
+; 1.094 ; spi_master:spi|active        ; spi_master:spi|busy          ; clk          ; clk         ; 0.000        ; 0.082      ; 1.388      ;
+; 1.116 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.409      ;
+; 1.116 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.409      ;
+; 1.117 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.410      ;
+; 1.117 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.410      ;
+; 1.117 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.410      ;
+; 1.118 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.411      ;
+; 1.118 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.411      ;
+; 1.123 ; mem_index[1]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.416      ;
+; 1.124 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.417      ;
+; 1.125 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.418      ;
+; 1.125 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.418      ;
+; 1.125 ; mem_index[1]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.418      ;
+; 1.126 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.419      ;
+; 1.126 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.419      ;
+; 1.127 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.420      ;
+; 1.127 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.420      ;
+; 1.127 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.420      ;
+; 1.128 ; mem_index[1]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.421      ;
+; 1.129 ; mem_index[1]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.422      ;
+; 1.130 ; mem_index[1]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.423      ;
+; 1.133 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.426      ;
+; 1.134 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.427      ;
+; 1.134 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.427      ;
+; 1.135 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.428      ;
+; 1.136 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.429      ;
+; 1.136 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.429      ;
+; 1.136 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.081      ; 1.429      ;
+; 1.147 ; mem_index[4]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.440      ;
+; 1.164 ; mem_index[5]                 ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.082      ; 1.458      ;
+; 1.172 ; data_in[5]                   ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.081      ; 1.465      ;
+; 1.217 ; spi_master:spi|avail         ; start                        ; clk          ; clk         ; -0.500       ; 0.127      ; 1.076      ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+-----------------------------------------------
+; Slow 1200mV 85C Model Metastability Summary ;
+-----------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 231.64 MHz ; 231.64 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; clk   ; -3.317 ; -125.476          ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; clk   ; 0.401 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Slow 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Slow 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -83.298                         ;
++-------+--------+---------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clk'                                                                                                         ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                    ; To Node                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.245      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.266 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.194      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.148 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.076      ;
+; -3.144 ; spi_master:spi|clk_count[0]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.072      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.141 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.069      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.100 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.028      ;
+; -3.093 ; spi_master:spi|clk_count[3]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 4.021      ;
+; -3.039 ; spi_master:spi|clk_count[0]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.073     ; 3.968      ;
+; -3.039 ; spi_master:spi|clk_count[0]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.073     ; 3.968      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -3.038 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.966      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.997 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.925      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.916      ;
+; -2.988 ; spi_master:spi|clk_count[3]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.073     ; 3.917      ;
+; -2.988 ; spi_master:spi|clk_count[3]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.073     ; 3.917      ;
+; -2.975 ; spi_master:spi|clk_count[7]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.903      ;
+; -2.968 ; spi_master:spi|clk_count[9]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.896      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.935 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.863      ;
+; -2.927 ; spi_master:spi|clk_count[2]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.855      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.897 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.825      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.894 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.822      ;
+; -2.870 ; spi_master:spi|clk_count[7]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.073     ; 3.799      ;
+; -2.870 ; spi_master:spi|clk_count[7]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.073     ; 3.799      ;
+; -2.865 ; spi_master:spi|clk_count[5]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.793      ;
+; -2.863 ; spi_master:spi|clk_count[9]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.073     ; 3.792      ;
+; -2.863 ; spi_master:spi|clk_count[9]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.073     ; 3.792      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.825 ; spi_master:spi|clk_count[6]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.753      ;
+; -2.824 ; spi_master:spi|clk_count[1]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.074     ; 3.752      ;
+; -2.822 ; spi_master:spi|clk_count[2]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.073     ; 3.751      ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Hold: 'clk'                                                                                                          ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                    ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.401 ; spi_master:spi|cs            ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|mosi          ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[0]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|sclk          ; spi_master:spi|sclk          ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|bit_count[3]  ; spi_master:spi|bit_count[3]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|bit_count[2]  ; spi_master:spi|bit_count[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; spi_master:spi|bit_count[1]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; sendByte                     ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; state_send.00000000011       ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[0]                 ; mem_index[0]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[3]                 ; mem_index[3]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[4]                 ; mem_index[4]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[2]                 ; mem_index[2]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[1]                 ; mem_index[1]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; mem_index[5]                 ; mem_index[5]                 ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.401 ; state_send.00000000010       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.073      ; 0.669      ;
+; 0.404 ; start                        ; start                        ; clk          ; clk         ; 0.000        ; 0.070      ; 0.669      ;
+; 0.461 ; state_send.00000000000       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.073      ; 0.729      ;
+; 0.469 ; spi_master:spi|shift_reg[5]  ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.737      ;
+; 0.472 ; spi_master:spi|shift_reg[3]  ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.740      ;
+; 0.650 ; spi_master:spi|active        ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.918      ;
+; 0.687 ; spi_master:spi|shift_reg[4]  ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.955      ;
+; 0.687 ; spi_master:spi|shift_reg[2]  ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.955      ;
+; 0.687 ; spi_master:spi|shift_reg[1]  ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.955      ;
+; 0.690 ; spi_master:spi|shift_reg[6]  ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.958      ;
+; 0.692 ; spi_master:spi|shift_reg[7]  ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.073      ; 0.960      ;
+; 0.693 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.961      ;
+; 0.703 ; state_send.00000000001       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.073      ; 0.971      ;
+; 0.705 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.973      ;
+; 0.705 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.973      ;
+; 0.705 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.973      ;
+; 0.706 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.974      ;
+; 0.706 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.974      ;
+; 0.707 ; spi_master:spi|clk_count[15] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.975      ;
+; 0.707 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.975      ;
+; 0.708 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.976      ;
+; 0.708 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.976      ;
+; 0.710 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.978      ;
+; 0.711 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.979      ;
+; 0.711 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.979      ;
+; 0.711 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.073      ; 0.979      ;
+; 0.711 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.979      ;
+; 0.712 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.073      ; 0.980      ;
+; 0.715 ; state_send.00000000011       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.073      ; 0.983      ;
+; 0.732 ; state_send.00000000001       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.073      ; 1.000      ;
+; 0.733 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[0]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.001      ;
+; 0.764 ; spi_master:spi|active        ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.032      ;
+; 0.786 ; spi_master:spi|active        ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.054      ;
+; 0.787 ; spi_master:spi|active        ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.055      ;
+; 0.788 ; spi_master:spi|active        ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.056      ;
+; 0.788 ; spi_master:spi|active        ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.056      ;
+; 0.790 ; spi_master:spi|active        ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.058      ;
+; 0.826 ; state_send.00000000000       ; state_send.00000000001       ; clk          ; clk         ; 0.000        ; 0.073      ; 1.094      ;
+; 0.879 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.147      ;
+; 0.886 ; data_in[6]                   ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.152      ;
+; 0.890 ; data_in[7]                   ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.156      ;
+; 0.915 ; mem_index[3]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.183      ;
+; 0.921 ; mem_index[3]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.189      ;
+; 0.921 ; data_in[2]                   ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.187      ;
+; 0.923 ; mem_index[3]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.191      ;
+; 0.928 ; mem_index[3]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.196      ;
+; 0.928 ; data_in[3]                   ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.194      ;
+; 0.930 ; mem_index[3]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.198      ;
+; 0.931 ; mem_index[3]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.199      ;
+; 0.963 ; spi_master:spi|active        ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.231      ;
+; 0.963 ; spi_master:spi|active        ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.073      ; 1.231      ;
+; 0.983 ; spi_master:spi|active        ; spi_master:spi|busy          ; clk          ; clk         ; 0.000        ; 0.074      ; 1.252      ;
+; 1.004 ; mem_index[1]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.272      ;
+; 1.005 ; start                        ; spi_master:spi|busy          ; clk          ; clk         ; -0.500       ; 0.051      ; 0.771      ;
+; 1.006 ; mem_index[1]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.274      ;
+; 1.010 ; mem_index[1]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.278      ;
+; 1.011 ; mem_index[1]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.279      ;
+; 1.012 ; mem_index[1]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.280      ;
+; 1.026 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.294      ;
+; 1.027 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.295      ;
+; 1.027 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.295      ;
+; 1.027 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.295      ;
+; 1.027 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.295      ;
+; 1.028 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.296      ;
+; 1.028 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.296      ;
+; 1.028 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.296      ;
+; 1.029 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.297      ;
+; 1.029 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.297      ;
+; 1.029 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.297      ;
+; 1.030 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.298      ;
+; 1.030 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.298      ;
+; 1.032 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.300      ;
+; 1.032 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.300      ;
+; 1.039 ; mem_index[5]                 ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.074      ; 1.308      ;
+; 1.041 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.309      ;
+; 1.043 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.311      ;
+; 1.044 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.312      ;
+; 1.045 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.073      ; 1.313      ;
+; 1.045 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.313      ;
+; 1.045 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.313      ;
+; 1.046 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.073      ; 1.314      ;
+; 1.047 ; mem_index[4]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.315      ;
+; 1.053 ; data_in[5]                   ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.071      ; 1.319      ;
+; 1.092 ; spi_master:spi|active        ; spi_master:spi|sclk          ; clk          ; clk         ; 0.000        ; 0.074      ; 1.361      ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Slow 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; clk   ; -0.946 ; -28.118           ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; clk   ; 0.184 ; 0.000             ;
++-------+-------+-------------------+
+
+
+-----------------------------------------
+; Fast 1200mV 0C Model Recovery Summary ;
+-----------------------------------------
+No paths to report.
+
+
+----------------------------------------
+; Fast 1200mV 0C Model Removal Summary ;
+----------------------------------------
+No paths to report.
+
+
++--------------------------------------------------+
+; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; clk   ; -3.000 ; -60.502                         ;
++-------+--------+---------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clk'                                                                                                         ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                    ; To Node                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.946 ; spi_master:spi|clk_count[0]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.896      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.934 ; spi_master:spi|clk_count[3]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.884      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.882 ; spi_master:spi|clk_count[7]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.832      ;
+; -0.876 ; spi_master:spi|clk_count[0]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.826      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.875 ; spi_master:spi|clk_count[9]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.825      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.872 ; start                        ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.924      ;
+; -0.864 ; spi_master:spi|clk_count[3]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.814      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.841 ; spi_master:spi|clk_count[2]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.791      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.835 ; spi_master:spi|clk_count[5]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.785      ;
+; -0.821 ; spi_master:spi|clk_count[0]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.037     ; 1.771      ;
+; -0.821 ; spi_master:spi|clk_count[0]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.037     ; 1.771      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.817 ; spi_master:spi|clk_count[14] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.767      ;
+; -0.812 ; spi_master:spi|clk_count[7]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.762      ;
+; -0.809 ; spi_master:spi|clk_count[3]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.037     ; 1.759      ;
+; -0.809 ; spi_master:spi|clk_count[3]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.037     ; 1.759      ;
+; -0.805 ; spi_master:spi|clk_count[9]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.755      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.803 ; spi_master:spi|clk_count[1]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.753      ;
+; -0.802 ; start                        ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.854      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.799 ; spi_master:spi|clk_count[13] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.749      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.797 ; spi_master:spi|clk_count[12] ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.747      ;
+; -0.793 ; start                        ; spi_master:spi|shift_reg[0] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.845      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[7] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[6] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[5] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[4] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[2] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.779 ; spi_master:spi|clk_count[8]  ; spi_master:spi|shift_reg[1] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.729      ;
+; -0.771 ; spi_master:spi|clk_count[2]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.721      ;
+; -0.765 ; spi_master:spi|clk_count[5]  ; spi_master:spi|bit_count[3] ; clk          ; clk         ; 1.000        ; -0.037     ; 1.715      ;
+; -0.764 ; start                        ; spi_master:spi|bit_count[1] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.816      ;
+; -0.763 ; start                        ; spi_master:spi|bit_count[2] ; clk          ; clk         ; 0.500        ; -0.435     ; 0.815      ;
+; -0.757 ; spi_master:spi|clk_count[7]  ; spi_master:spi|avail        ; clk          ; clk         ; 1.000        ; -0.037     ; 1.707      ;
+; -0.757 ; spi_master:spi|clk_count[7]  ; spi_master:spi|busy         ; clk          ; clk         ; 1.000        ; -0.037     ; 1.707      ;
++--------+------------------------------+-----------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Hold: 'clk'                                                                                                          ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                    ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.184 ; start                        ; start                        ; clk          ; clk         ; 0.000        ; 0.039      ; 0.307      ;
+; 0.186 ; spi_master:spi|sclk          ; spi_master:spi|sclk          ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; sendByte                     ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; state_send.00000000011       ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[0]                 ; mem_index[0]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[3]                 ; mem_index[3]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[4]                 ; mem_index[4]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[2]                 ; mem_index[2]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[1]                 ; mem_index[1]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; mem_index[5]                 ; mem_index[5]                 ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.186 ; state_send.00000000010       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.037      ; 0.307      ;
+; 0.187 ; spi_master:spi|cs            ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|mosi          ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[0]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|bit_count[3]  ; spi_master:spi|bit_count[3]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|bit_count[2]  ; spi_master:spi|bit_count[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.187 ; spi_master:spi|bit_count[1]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.307      ;
+; 0.193 ; spi_master:spi|shift_reg[5]  ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.313      ;
+; 0.196 ; spi_master:spi|shift_reg[3]  ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.316      ;
+; 0.204 ; state_send.00000000000       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.037      ; 0.325      ;
+; 0.290 ; spi_master:spi|active        ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.410      ;
+; 0.294 ; spi_master:spi|shift_reg[4]  ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.414      ;
+; 0.294 ; spi_master:spi|shift_reg[2]  ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.414      ;
+; 0.294 ; spi_master:spi|shift_reg[1]  ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.414      ;
+; 0.297 ; spi_master:spi|shift_reg[6]  ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.417      ;
+; 0.297 ; spi_master:spi|shift_reg[0]  ; spi_master:spi|shift_reg[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.417      ;
+; 0.298 ; spi_master:spi|shift_reg[7]  ; spi_master:spi|mosi          ; clk          ; clk         ; 0.000        ; 0.036      ; 0.418      ;
+; 0.302 ; state_send.00000000011       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.037      ; 0.423      ;
+; 0.303 ; state_send.00000000001       ; state_send.00000000010       ; clk          ; clk         ; 0.000        ; 0.037      ; 0.424      ;
+; 0.304 ; spi_master:spi|clk_count[15] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.424      ;
+; 0.305 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.425      ;
+; 0.305 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.425      ;
+; 0.306 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.426      ;
+; 0.306 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.426      ;
+; 0.306 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.426      ;
+; 0.307 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.427      ;
+; 0.307 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.427      ;
+; 0.307 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.427      ;
+; 0.307 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.427      ;
+; 0.308 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.428      ;
+; 0.308 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.428      ;
+; 0.313 ; state_send.00000000001       ; sendByte                     ; clk          ; clk         ; 0.000        ; 0.037      ; 0.434      ;
+; 0.317 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[0]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.437      ;
+; 0.338 ; spi_master:spi|active        ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.458      ;
+; 0.345 ; spi_master:spi|active        ; spi_master:spi|shift_reg[4]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.465      ;
+; 0.346 ; spi_master:spi|active        ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.466      ;
+; 0.346 ; spi_master:spi|active        ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.466      ;
+; 0.346 ; spi_master:spi|active        ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.466      ;
+; 0.347 ; spi_master:spi|active        ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.467      ;
+; 0.383 ; state_send.00000000000       ; state_send.00000000001       ; clk          ; clk         ; 0.000        ; 0.037      ; 0.504      ;
+; 0.386 ; spi_master:spi|bit_count[0]  ; spi_master:spi|bit_count[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.506      ;
+; 0.392 ; data_in[6]                   ; spi_master:spi|shift_reg[6]  ; clk          ; clk         ; 0.000        ; 0.035      ; 0.511      ;
+; 0.395 ; mem_index[3]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.515      ;
+; 0.396 ; spi_master:spi|avail         ; start                        ; clk          ; clk         ; -0.500       ; 0.435      ; 0.435      ;
+; 0.400 ; data_in[7]                   ; spi_master:spi|shift_reg[7]  ; clk          ; clk         ; 0.000        ; 0.035      ; 0.519      ;
+; 0.402 ; mem_index[3]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.522      ;
+; 0.404 ; mem_index[3]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.524      ;
+; 0.408 ; mem_index[3]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.528      ;
+; 0.410 ; mem_index[3]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.530      ;
+; 0.411 ; mem_index[3]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.531      ;
+; 0.412 ; data_in[2]                   ; spi_master:spi|shift_reg[2]  ; clk          ; clk         ; 0.000        ; 0.035      ; 0.531      ;
+; 0.415 ; spi_master:spi|active        ; spi_master:spi|cs            ; clk          ; clk         ; 0.000        ; 0.036      ; 0.535      ;
+; 0.417 ; data_in[3]                   ; spi_master:spi|shift_reg[3]  ; clk          ; clk         ; 0.000        ; 0.035      ; 0.536      ;
+; 0.419 ; spi_master:spi|active        ; spi_master:spi|bit_count[0]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.539      ;
+; 0.432 ; spi_master:spi|active        ; spi_master:spi|busy          ; clk          ; clk         ; 0.000        ; 0.037      ; 0.553      ;
+; 0.451 ; mem_index[1]                 ; data_in[4]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.571      ;
+; 0.453 ; mem_index[4]                 ; data_in[1]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.573      ;
+; 0.453 ; mem_index[1]                 ; data_in[5]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.573      ;
+; 0.454 ; mem_index[5]                 ; state_send.00000000011       ; clk          ; clk         ; 0.000        ; 0.037      ; 0.575      ;
+; 0.454 ; spi_master:spi|clk_count[5]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.574      ;
+; 0.454 ; spi_master:spi|clk_count[13] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.574      ;
+; 0.454 ; spi_master:spi|clk_count[3]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.574      ;
+; 0.454 ; spi_master:spi|clk_count[1]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.574      ;
+; 0.454 ; spi_master:spi|clk_count[11] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.574      ;
+; 0.455 ; spi_master:spi|clk_count[7]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.575      ;
+; 0.455 ; spi_master:spi|clk_count[9]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.575      ;
+; 0.456 ; mem_index[1]                 ; data_in[0]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.576      ;
+; 0.457 ; mem_index[1]                 ; data_in[7]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.577      ;
+; 0.458 ; mem_index[1]                 ; data_in[6]                   ; clk          ; clk         ; 0.000        ; 0.036      ; 0.578      ;
+; 0.463 ; data_in[5]                   ; spi_master:spi|shift_reg[5]  ; clk          ; clk         ; 0.000        ; 0.035      ; 0.582      ;
+; 0.464 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[1]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.584      ;
+; 0.464 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[7]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.584      ;
+; 0.465 ; spi_master:spi|clk_count[14] ; spi_master:spi|clk_count[15] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.585      ;
+; 0.465 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[5]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.585      ;
+; 0.465 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[3]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.585      ;
+; 0.465 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[9]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.585      ;
+; 0.466 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[13] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.586      ;
+; 0.466 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[11] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.586      ;
+; 0.467 ; spi_master:spi|clk_count[0]  ; spi_master:spi|clk_count[2]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.587      ;
+; 0.467 ; spi_master:spi|clk_count[6]  ; spi_master:spi|clk_count[8]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.587      ;
+; 0.468 ; spi_master:spi|clk_count[4]  ; spi_master:spi|clk_count[6]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.588      ;
+; 0.468 ; spi_master:spi|clk_count[2]  ; spi_master:spi|clk_count[4]  ; clk          ; clk         ; 0.000        ; 0.036      ; 0.588      ;
+; 0.468 ; spi_master:spi|clk_count[8]  ; spi_master:spi|clk_count[10] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.588      ;
+; 0.469 ; spi_master:spi|clk_count[12] ; spi_master:spi|clk_count[14] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.589      ;
+; 0.469 ; spi_master:spi|clk_count[10] ; spi_master:spi|clk_count[12] ; clk          ; clk         ; 0.000        ; 0.036      ; 0.589      ;
+; 0.482 ; spi_master:spi|active        ; spi_master:spi|sclk          ; clk          ; clk         ; 0.000        ; 0.037      ; 0.603      ;
++-------+------------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+
+
+----------------------------------------------
+; Fast 1200mV 0C Model Metastability Summary ;
+----------------------------------------------
+No synchronizer chains to report.
+
+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+----------+-------+----------+---------+---------------------+
+; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -3.595   ; 0.184 ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; -3.595   ; 0.184 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -137.47  ; 0.0   ; 0.0      ; 0.0     ; -83.298             ;
+;  clk             ; -137.470 ; 0.000 ; N/A      ; N/A     ; -83.298             ;
++------------------+----------+-------+----------+---------+---------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Board Trace Model Assignments                                                                                                                                                                                                                                                                                                                                                                                    ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; Pin           ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+; mosi          ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; sclk          ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; cs            ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
++---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
+
+
++----------------------------------------------------------------------------+
+; Input Transition Times                                                     ;
++-------------------------+--------------+-----------------+-----------------+
+; Pin                     ; I/O Standard ; 10-90 Rise Time ; 90-10 Fall Time ;
++-------------------------+--------------+-----------------+-----------------+
+; state[0]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; state[1]                ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; reset                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; clk                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_ASDO_DATA1~     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_FLASH_nCE_nCSO~ ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; ~ALTERA_DATA0~          ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
++-------------------------+--------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; mosi          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.07e-09 V                   ; 2.33 V              ; -0.00421 V          ; 0.165 V                              ; 0.078 V                              ; 3.11e-09 s                  ; 2.85e-09 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.07e-09 V                  ; 2.33 V             ; -0.00421 V         ; 0.165 V                             ; 0.078 V                             ; 3.11e-09 s                 ; 2.85e-09 s                 ; Yes                       ; Yes                       ;
+; sclk          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.07e-09 V                   ; 2.38 V              ; -0.0073 V           ; 0.097 V                              ; 0.018 V                              ; 4.24e-10 s                  ; 3.65e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.07e-09 V                  ; 2.38 V             ; -0.0073 V          ; 0.097 V                             ; 0.018 V                             ; 4.24e-10 s                 ; 3.65e-10 s                 ; No                        ; Yes                       ;
+; cs            ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.07e-09 V                   ; 2.36 V              ; -0.00737 V          ; 0.209 V                              ; 0.012 V                              ; 5.22e-10 s                  ; 5.33e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.07e-09 V                  ; 2.36 V             ; -0.00737 V         ; 0.209 V                             ; 0.012 V                             ; 5.22e-10 s                 ; 5.33e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.74e-09 V                   ; 2.37 V              ; -0.0346 V           ; 0.198 V                              ; 0.094 V                              ; 3.14e-10 s                  ; 2.92e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.74e-09 V                  ; 2.37 V             ; -0.0346 V          ; 0.198 V                             ; 0.094 V                             ; 3.14e-10 s                 ; 2.92e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.57e-09 V                   ; 2.37 V              ; -0.00683 V          ; 0.171 V                              ; 0.018 V                              ; 4.97e-10 s                  ; 6.66e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.57e-09 V                  ; 2.37 V             ; -0.00683 V         ; 0.171 V                             ; 0.018 V                             ; 4.97e-10 s                 ; 6.66e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Slow 1200mv 85c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; mosi          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.93e-07 V                   ; 2.33 V              ; -0.0022 V           ; 0.088 V                              ; 0.056 V                              ; 3.76e-09 s                  ; 3.48e-09 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.93e-07 V                  ; 2.33 V             ; -0.0022 V          ; 0.088 V                             ; 0.056 V                             ; 3.76e-09 s                 ; 3.48e-09 s                 ; Yes                       ; Yes                       ;
+; sclk          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.93e-07 V                   ; 2.35 V              ; -0.00834 V          ; 0.127 V                              ; 0.035 V                              ; 4.7e-10 s                   ; 4.64e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.93e-07 V                  ; 2.35 V             ; -0.00834 V         ; 0.127 V                             ; 0.035 V                             ; 4.7e-10 s                  ; 4.64e-10 s                 ; Yes                       ; Yes                       ;
+; cs            ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.93e-07 V                   ; 2.34 V              ; -0.00869 V          ; 0.14 V                               ; 0.046 V                              ; 6.89e-10 s                  ; 6.56e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.93e-07 V                  ; 2.34 V             ; -0.00869 V         ; 0.14 V                              ; 0.046 V                             ; 6.89e-10 s                 ; 6.56e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 1.55e-07 V                   ; 2.35 V              ; -0.00221 V          ; 0.097 V                              ; 0.005 V                              ; 4.49e-10 s                  ; 3.85e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 1.55e-07 V                  ; 2.35 V             ; -0.00221 V         ; 0.097 V                             ; 0.005 V                             ; 4.49e-10 s                 ; 3.85e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.54e-07 V                   ; 2.34 V              ; -0.00774 V          ; 0.109 V                              ; 0.026 V                              ; 6.58e-10 s                  ; 8.24e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 2.54e-07 V                  ; 2.34 V             ; -0.00774 V         ; 0.109 V                             ; 0.026 V                             ; 6.58e-10 s                 ; 8.24e-10 s                 ; Yes                       ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Signal Integrity Metrics (Fast 1200mv 0c Model)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+; mosi          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.74e-08 V                   ; 2.64 V              ; -0.0117 V           ; 0.202 V                              ; 0.176 V                              ; 2.38e-09 s                  ; 2.22e-09 s                  ; No                         ; Yes                        ; 2.62 V                      ; 2.74e-08 V                  ; 2.64 V             ; -0.0117 V          ; 0.202 V                             ; 0.176 V                             ; 2.38e-09 s                 ; 2.22e-09 s                 ; No                        ; Yes                       ;
+; sclk          ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.74e-08 V                   ; 2.73 V              ; -0.0384 V           ; 0.169 V                              ; 0.089 V                              ; 2.7e-10 s                   ; 2.62e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 2.74e-08 V                  ; 2.73 V             ; -0.0384 V          ; 0.169 V                             ; 0.089 V                             ; 2.7e-10 s                  ; 2.62e-10 s                 ; Yes                       ; Yes                       ;
+; cs            ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.74e-08 V                   ; 2.71 V              ; -0.0317 V           ; 0.148 V                              ; 0.064 V                              ; 4.51e-10 s                  ; 4.15e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 2.74e-08 V                  ; 2.71 V             ; -0.0317 V          ; 0.148 V                             ; 0.064 V                             ; 4.51e-10 s                 ; 4.15e-10 s                 ; No                        ; Yes                       ;
+; ~ALTERA_DCLK~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 2.22e-08 V                   ; 2.74 V              ; -0.06 V             ; 0.158 V                              ; 0.08 V                               ; 2.68e-10 s                  ; 2.19e-10 s                  ; Yes                        ; Yes                        ; 2.62 V                      ; 2.22e-08 V                  ; 2.74 V             ; -0.06 V            ; 0.158 V                             ; 0.08 V                              ; 2.68e-10 s                 ; 2.19e-10 s                 ; Yes                       ; Yes                       ;
+; ~ALTERA_nCEO~ ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.62 V                       ; 3.54e-08 V                   ; 2.7 V               ; -0.00943 V          ; 0.276 V                              ; 0.035 V                              ; 3.19e-10 s                  ; 4.99e-10 s                  ; No                         ; Yes                        ; 2.62 V                      ; 3.54e-08 V                  ; 2.7 V              ; -0.00943 V         ; 0.276 V                             ; 0.035 V                             ; 3.19e-10 s                 ; 4.99e-10 s                 ; No                        ; Yes                       ;
++---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1027     ; 29       ; 3        ; 1        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1027     ; 29       ; 3        ; 1        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No non-DPA dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths Summary                    ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 54    ; 54   ;
+; Unconstrained Output Ports      ; 3     ; 3    ;
+; Unconstrained Output Port Paths ; 3     ; 3    ;
++---------------------------------+-------+------+
+
+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; clk    ; clk   ; Base ; Constrained ;
++--------+-------+------+-------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; cs          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; mosi        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; sclk        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                          ;
++-------------+---------------------------------------------------------------------------------------+
+; Output Port ; Comment                                                                               ;
++-------------+---------------------------------------------------------------------------------------+
+; cs          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; mosi        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; sclk        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++-------------+---------------------------------------------------------------------------------------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Tue May 28 11:03:28 2024
+Info: Command: quartus_sta matriz8x8 -c spi_master
+Info: qsta_default_script.tcl version: #1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'spi_master.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name clk clk
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -3.595
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.595            -137.470 clk 
+Info (332146): Worst-case hold slack is 0.452
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.452               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -83.298 clk 
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -3.317
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.317            -125.476 clk 
+Info (332146): Worst-case hold slack is 0.401
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.401               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -83.298 clk 
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Critical Warning (332148): Timing requirements not met
+    Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
+Info (332146): Worst-case setup slack is -0.946
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -0.946             -28.118 clk 
+Info (332146): Worst-case hold slack is 0.184
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.184               0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.000
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -3.000             -60.502 clk 
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4757 megabytes
+    Info: Processing ended: Tue May 28 11:03:30 2024
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
