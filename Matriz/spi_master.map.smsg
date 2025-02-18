@@ -1,1 +1,0 @@
-Warning (10268): Verilog HDL information at fsm_matriz8x8.v(48): always construct contains both blocking and non-blocking assignments File: C:/Users/UECCI/Documents/UNAL/digital1/2024-1/labs/visualizacion/matriz8x8SPI/src/fsm_matriz8x8.v Line: 48
