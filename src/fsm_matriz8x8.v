@@ -1,5 +1,3 @@
-`include "src\spi_master.v"
-
 module fsm_matriz8x8 (
 	input clk,                // Reloj del sistema
     input reset,              // Señal de reset
