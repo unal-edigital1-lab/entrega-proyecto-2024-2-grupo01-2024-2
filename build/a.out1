@@ -1,20 +1,12 @@
-**** module/scope: ultrasonic
-     Flip-Flops   : 83
-     Logic Gates  : 715
-     ADDER[32]: 2 units
-     EQUALITY[32]: 4 units
-     MAGNITUDE[32]: 3 units
-     MUX[2]: 66 slices
-     LPM[12]: 1 unaccounted
+**** module/scope: BCDtoSSeg
+     Flip-Flops   : 0
+     Logic Gates  : 0
+     LPM[5]: 1 unaccounted
      LOG[13]: 1 unaccounted
      LOG[14]: 1 unaccounted
 **** TOTALS
-     Flip-Flops   : 83
-     Logic Gates  : 715
-     ADDER[32]: 2 units
-     EQUALITY[32]: 4 units
-     MAGNITUDE[32]: 3 units
-     MUX[2]: 66 slices
-     LPM[12]: 1 unaccounted
+     Flip-Flops   : 0
+     Logic Gates  : 0
+     LPM[5]: 1 unaccounted
      LOG[13]: 1 unaccounted
      LOG[14]: 1 unaccounted
