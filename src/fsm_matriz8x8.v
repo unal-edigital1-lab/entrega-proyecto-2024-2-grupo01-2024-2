@@ -2,15 +2,15 @@
 
 module fsm_matriz8x8 (
 	input clk,                // Reloj del sistema
-   input reset,              // Señal de reset
-   input [1:0] state,      // Datos de entrada para enviar
-	output  mosi,               // Master Out Slave In
-   output  sclk,          // Reloj SPI
-   output  cs            // Chip Select
+    input reset,              // Señal de reset
+    input [1:0] state,      // Datos de entrada para enviar
+	output  mosi,               // Master Out Slave In (Din)
+    output  sclk,          // Reloj SPI
+    output  cs            // Chip Select
 
   
 );
-/*TODO: VALIDAR  QUE EL CS SE ACIVE PARA LOS 16 BITS  Y NO SOLO OCHO */
+/*TO-DO: VALIDAR  QUE EL CS SE ACIVE PARA LOS 16 BITS  Y NO SOLO OCHO */
 
    reg [7:0] data_in;
    wire [7:0] data_out;
@@ -58,21 +58,21 @@ module fsm_matriz8x8 (
 		  
 		  
 		memory4CommandSend[10] = 8'h02;  // 
-        memory4CommandSend[11] = 8'hFF;  // 
+        memory4CommandSend[11] = 8'hFF;  // 255
         memory4CommandSend[12] = 8'h03;  // 
-        memory4CommandSend[13] = 8'h7f;  // 
+        memory4CommandSend[13] = 8'h7f;  // 127
         memory4CommandSend[14] = 8'h04;  // 
-        memory4CommandSend[15] = 8'h3c;  // 
+        memory4CommandSend[15] = 8'h3c;  // 60
         memory4CommandSend[16] = 8'h05;  // 
-        memory4CommandSend[17] = 8'h55;  // 
+        memory4CommandSend[17] = 8'h55;  // 85
         memory4CommandSend[18] = 8'h06;  // 
-        memory4CommandSend[19] = 8'hAA;  // 
+        memory4CommandSend[19] = 8'hAA;  // 170
         memory4CommandSend[20] = 8'h07;  // 
-        memory4CommandSend[21] = 8'h0f;  // 
+        memory4CommandSend[21] = 8'h0f;  // 15
         memory4CommandSend[22] = 8'h08;  // 
-        memory4CommandSend[23] = 8'hf0;  //
+        memory4CommandSend[23] = 8'hf0;  // 240
         memory4CommandSend[24] = 8'h01;  //  Digital 1
-        memory4CommandSend[25] = 8'hff;  // 
+        memory4CommandSend[25] = 8'hff;  // 255
 	  
     end
 	

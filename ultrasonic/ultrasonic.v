@@ -52,6 +52,6 @@ module ultrasonic(
                 echo_time <= echo_time + 1;
             end
         end
-    end
+    end
 
 endmodule

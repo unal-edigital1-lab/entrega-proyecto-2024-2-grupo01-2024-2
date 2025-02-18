@@ -1,3 +1,4 @@
+`include "src\fsm_matriz8x8.v"
 `timescale 1ns / 1ps
 
 module fsm_matriz8x8_TB;
