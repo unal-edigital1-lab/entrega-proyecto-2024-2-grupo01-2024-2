@@ -1,6 +1,6 @@
 module dis(an,clk,number,seg,rst);
     output reg [3:0] an;
-    input [11:0] number;
+    input [15:0] number;
     output [0:6] seg;
     input rst;
     reg [3:0] th;
@@ -33,7 +33,7 @@ module dis(an,clk,number,seg,rst);
     always @(posedge enable) begin
         if(rst==0) begin
             count<= count+1;
-            num[11:0]<=number;
+            num<=number;
             case (count)
                 2'd0: begin th <= num[3:0]; an <= 4'b1110; end
                 2'd1: begin th <= num[7:4]; an <= 4'b1101; end
