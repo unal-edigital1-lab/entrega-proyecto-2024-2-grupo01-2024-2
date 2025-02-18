@@ -3,13 +3,17 @@ module ultrasonic(
     input reset,             // Reset para reiniciar el sistema
     input echo,              // Señal de retorno del sensor
     output trigger=0,      // Señal de activación del sensor
-    output [15:0] dist   // Distancia medida en cm
+    output [11:0] cm=0,
+    an,seg
 );
 
+    output reg [3:0] an;
+    output [0:6] seg;
     reg [21:0] counter=0;      // Contador general para control del trigger
-    reg [8:0] cm=0;
     reg [11:0] cm_cont=0;
     reg enable=0;
+
+    dis Dis(.an(an),.clk(clk),.seg(seg),.rst(reset));
 
     always @(posedge echo) begin
         cm_cont<=0;
@@ -45,8 +49,6 @@ module ultrasonic(
             if (counter >= 3000000) begin
                 counter <= 0;
             end
-            i
         end
     end
-
 endmodule
