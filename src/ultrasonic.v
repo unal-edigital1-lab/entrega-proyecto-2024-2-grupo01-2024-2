@@ -13,8 +13,8 @@ module ultrasonic(clk,reset,echo,trigger,an,seg);
     dis Dis(.an(an),.clk(clk),.number(cm),.seg(seg),.rst(reset));
 
     always @(posedge echo) begin
-        cm_cont<=0;
-        cm<=0;
+        cm_cont=0;
+        c<=0;
         enable<=1;
     end
 
