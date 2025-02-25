@@ -33,12 +33,12 @@ module matriz_caras2 (
     );
 
     // Memorias para diferentes patrones de LEDs
-    reg [7:0] patron1 [0:7];  // Patrón 1
-    reg [7:0] patron2 [0:7];  // Patrón 2
-    reg [7:0] patron3 [0:7];  // Patrón 3
-    reg [7:0] patron4 [0:7];  // Patrón 4
+    reg [7:0] patron1 [7:0];  // Patrón 1
+    reg [7:0] patron2 [7:0];  // Patrón 2
+    reg [7:0] patron3 [7:0];  // Patrón 3
+    reg [7:0] patron4 [7:0];  // Patrón 4
 
-    reg [7:0] memory4CommandSend [0:15]; // Buffer de datos a enviar
+    reg [4:0] memory4CommandSend [17:0]; // Buffer de datos a enviar
 
     reg [5:0] mem_index = 0;
     reg sendByte;
@@ -47,6 +47,19 @@ module matriz_caras2 (
 
     // Inicialización de patrones
     initial begin
+        
+        //Boot Matriz
+        memory4CommandSend[0] = 8'h0C;  // Shutdown command
+        memory4CommandSend[1] = 8'h01;  // Shutdown Normal Operation
+        memory4CommandSend[2] = 8'h09;  // Decode-Mode
+        memory4CommandSend[3] = 8'h00;  // Decode-Mode No decode for digits 7–0
+		memory4CommandSend[4] = 8'h0A;  // Intensity
+		memory4CommandSend[5] = 8'h0A;  // Intensity value
+        memory4CommandSend[6] = 8'h0B;  // Scan Limit
+        memory4CommandSend[7] = 8'h07;  // Scan Limit Value
+		memory4CommandSend[8] = 8'h0F;  // Display Test 
+        memory4CommandSend[9] = 8'h00;  // Display Test Value
+
         // Patrón 1 - Feliz
         patron1[0] = 8'b11111111;
         patron1[1] = 8'b10000001;
@@ -93,10 +106,52 @@ module matriz_caras2 (
         if (reset) begin
             prev_state <= state; // Almacena el estado actual
             case (state)
-                2'b00: memory4CommandSend = {patron1[0], patron1[1], patron1[2], patron1[3], patron1[4], patron1[5], patron1[6], patron1[7]};
-                2'b01: memory4CommandSend = {patron2[0], patron2[1], patron2[2], patron2[3], patron2[4], patron2[5], patron2[6], patron2[7]};
-                2'b10: memory4CommandSend = {patron3[0], patron3[1], patron3[2], patron3[3], patron3[4], patron3[5], patron3[6], patron3[7]};
-                2'b11: memory4CommandSend = {patron4[0], patron4[1], patron4[2], patron4[3], patron4[4], patron4[5], patron4[6], patron4[7]};
+                2'b00: begin
+                    memory4CommandSend[10]  = patron1[0];
+                    memory4CommandSend[11]  = patron1[1] ;
+                    memory4CommandSend[12]  = patron1[2] ;
+                    memory4CommandSend[13]  = patron1[3] ;
+                    memory4CommandSend[14]  = patron1[4] ;
+                    memory4CommandSend[15]  = patron1[5] ;
+                    memory4CommandSend[16]  = patron1[6] ;
+                    memory4CommandSend[17]  = patron1[7] ;
+
+                end
+                2'b01: begin
+                    memory4CommandSend[10]  = patron2[0];
+                    memory4CommandSend[11]  = patron2[1] ;
+                    memory4CommandSend[12]  = patron2[2] ;
+                    memory4CommandSend[13]  = patron2[3] ;
+                    memory4CommandSend[14]  = patron2[4] ;
+                    memory4CommandSend[15]  = patron2[5] ;
+                    memory4CommandSend[16]  = patron2[6] ;
+                    memory4CommandSend[17]  = patron2[7] ;
+
+                end
+                2'b10: begin
+                    memory4CommandSend[10]  = patron3[0];
+                    memory4CommandSend[11]  = patron3[1] ;
+                    memory4CommandSend[12]  = patron3[2] ;
+                    memory4CommandSend[13]  = patron3[3] ;
+                    memory4CommandSend[14]  = patron3[4] ;
+                    memory4CommandSend[15]  = patron3[5] ;
+                    memory4CommandSend[16]  = patron3[6] ;
+                    memory4CommandSend[17]  = patron3[7] ;
+
+                end
+            
+                2'b11: begin
+                    memory4CommandSend[10]  = patron4[0];
+                    memory4CommandSend[11]  = patron4[1] ;
+                    memory4CommandSend[12]  = patron4[2] ;
+                    memory4CommandSend[13]  = patron4[3] ;
+                    memory4CommandSend[14]  = patron4[4] ;
+                    memory4CommandSend[15]  = patron4[5] ;
+                    memory4CommandSend[16]  = patron4[6] ;
+                    memory4CommandSend[17]  = patron4[7] ;
+
+                end
+                
             endcase
             mem_index <= 0;
         end
