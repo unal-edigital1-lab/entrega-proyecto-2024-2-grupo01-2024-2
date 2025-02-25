@@ -35,10 +35,10 @@ module dis(an,clk,number,seg,rst);
             count<= count+1;
             num<=number;
             case (count)
-                2'd0: begin th <= num[3:0]; an <= 4'b1110; end
-                2'd1: begin th <= num[7:4]; an <= 4'b1101; end
-                2'd2: begin th <= num[11:8]; an <= 4'b1011; end
-                2'd3: begin th <= num[15:12]; an <= 4'b0111; end
+                2'd0: begin th <= num[3:0]; an <= 4'b0111; end
+                2'd1: begin th <= num[7:4]; an <= 4'b1011; end
+                2'd2: begin th <= num[11:8]; an <= 4'b1101; end
+                2'd3: begin th <= num[15:12]; an <= 4'b1110; end
             endcase
         end else begin
             count<= 0; 
