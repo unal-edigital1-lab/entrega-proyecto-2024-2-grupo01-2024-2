@@ -12,7 +12,7 @@ module dis(an,clk,number,seg,rst);
     wire o_DV;
     reg start=1'b1;
 
-    reg[1:0] count =0;
+    reg[2:0] count =0;
     reg [26:0] fre;
     wire enable;
     assign enable =fre[16];
