@@ -4,7 +4,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable,cm);
     input echo;             
     output reg trigger=0;
     output reg [15:0] cm=0;
-    output [3:0] an;
+    output [7:0] an;
     output [0:6] seg;
     reg [22:0] counter;
     reg [11:0] cm_cont;
