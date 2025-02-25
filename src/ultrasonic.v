@@ -3,7 +3,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable);
     input reset;
     input echo;             
     output reg trigger=0;
-    reg [15:0] cm=0;
+    reg [0:15] cm=0;
     output [3:0] an;
     output [0:6] seg;
     reg [21:0] counter;
@@ -26,7 +26,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable);
                 counter <= 0;
                 cm_cont <=0;
             end
-            if (cm_cont>=2900 && enable==1) begin
+            if (cm_cont>=2900 && enable==1 && echo==1) begin
                 cm_cont<=0;
                 cm<=cm+1;
             end
