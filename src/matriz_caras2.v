@@ -1,6 +1,6 @@
-`include "src\spi_master.v"
+//`include "src\spi_master.v"
 
-module fsm_matriz8x8 (
+module matriz_caras2 (
     input clk,                // Reloj del sistema
     input reset,              // Señal de reset
     input [1:0] state,        // Selector de patrones de LED
