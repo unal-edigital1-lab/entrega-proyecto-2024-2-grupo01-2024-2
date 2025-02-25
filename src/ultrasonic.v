@@ -1,19 +1,16 @@
-module ultrasonic(
-    input clk,               // Reloj de 50 MHz del FPGA
-    input reset,             // Reset para reiniciar el sistema
-    input echo,              // Señal de retorno del sensor
-    output trigger=0,      // Señal de activación del sensor
-    output [11:0] cm=0,
-    an,seg
-);
-
-    output reg [3:0] an;
+module ultrasonic(clk,reset,echo,trigger,an,seg);
+    input clk;
+    input reset;
+    input echo;             
+    output reg trigger=0;
+    reg [15:0] cm=0;
+    output [3:0] an;
     output [0:6] seg;
-    reg [21:0] counter=0;      // Contador general para control del trigger
-    reg [11:0] cm_cont=0;
+    reg [21:0] counter;
+    reg [11:0] cm_cont;
     reg enable=0;
 
-    dis Dis(.an(an),.clk(clk),.seg(seg),.rst(reset));
+    dis Dis(.an(an),.clk(clk),.number(cm),.seg(seg),.rst(reset));
 
     always @(posedge echo) begin
         cm_cont<=0;
@@ -22,11 +19,11 @@ module ultrasonic(
     end
 
     always @(negedge echo) begin
-        enable=0;
+        enable<=0;
     end
 
     always @(posedge clk or posedge reset) begin
-        if (reset) begin
+        if (reset==1) begin
             counter <= 0;
             trigger <= 0;
             cm_cont <=0;
@@ -34,8 +31,8 @@ module ultrasonic(
         end else begin
             counter <= counter + 1;
             cm_cont<=cm_cont+1;
-            if (cm_cont>=2900&&enable==1) begin
-                cm_cont=0;
+            if (cm_cont>=2900 && enable==1) begin
+                cm_cont<=0;
                 cm<=cm+1;
             end
             // *Generación del pulso de Trigger (10 µs mínimo)*
