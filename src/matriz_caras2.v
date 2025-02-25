@@ -153,7 +153,7 @@ module matriz_caras2 (
                 end
                 
             endcase
-            mem_index <= 0;
+        
         end
     end
 

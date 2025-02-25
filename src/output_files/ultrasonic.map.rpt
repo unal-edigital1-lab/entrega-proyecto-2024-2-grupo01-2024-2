@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ultrasonic
-Tue Feb 18 17:35:07 2025
+Tue Feb 25 15:26:06 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -10,7 +10,15 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -37,20 +45,20 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                        ;
 +------------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Tue Feb 18 17:35:07 2025              ;
+; Analysis & Synthesis Status        ; Successful - Tue Feb 25 15:26:06 2025          ;
 ; Quartus Prime Version              ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                      ; ultrasonic                                     ;
 ; Top-level Entity Name              ; ultrasonic                                     ;
 ; Family                             ; Cyclone IV E                                   ;
-; Total logic elements               ; N/A until Partition Merge                      ;
-;     Total combinational functions  ; N/A until Partition Merge                      ;
-;     Dedicated logic registers      ; N/A until Partition Merge                      ;
-; Total registers                    ; N/A until Partition Merge                      ;
-; Total pins                         ; N/A until Partition Merge                      ;
-; Total virtual pins                 ; N/A until Partition Merge                      ;
-; Total memory bits                  ; N/A until Partition Merge                      ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                      ;
-; Total PLLs                         ; N/A until Partition Merge                      ;
+; Total logic elements               ; 125                                            ;
+;     Total combinational functions  ; 109                                            ;
+;     Dedicated logic registers      ; 96                                             ;
+; Total registers                    ; 96                                             ;
+; Total pins                         ; 16                                             ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
 +------------------------------------+------------------------------------------------+
 
 
@@ -149,11 +157,140 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+; dis.v                            ; yes             ; User Verilog HDL File  ; /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v        ;         ;
+; BCDtoSSeg.v                      ; yes             ; User Verilog HDL File  ; /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/BCDtoSSeg.v  ;         ;
+; ultrasonic.v                     ; yes             ; User Verilog HDL File  ; /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 125         ;
+;                                             ;             ;
+; Total combinational functions               ; 109         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 30          ;
+;     -- 3 input functions                    ; 3           ;
+;     -- <=2 input functions                  ; 76          ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 44          ;
+;     -- arithmetic mode                      ; 65          ;
+;                                             ;             ;
+; Total registers                             ; 96          ;
+;     -- Dedicated logic registers            ; 96          ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 16          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; reset~input ;
+; Maximum fan-out                             ; 96          ;
+; Total fan-out                               ; 660         ;
+; Average fan-out                             ; 2.78        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name               ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+-------------+--------------+
+; |ultrasonic                ; 109 (71)            ; 96 (53)                   ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |ultrasonic                       ; ultrasonic  ; work         ;
+;    |dis:Dis|               ; 38 (31)             ; 43 (43)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ultrasonic|dis:Dis               ; dis         ; work         ;
+;       |BCDtoSSeg:bcd|      ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ultrasonic|dis:Dis|BCDtoSSeg:bcd ; BCDtoSSeg   ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------+
+; Registers Removed During Synthesis                          ;
++----------------------------------------+--------------------+
+; Register name                          ; Reason for Removal ;
++----------------------------------------+--------------------+
+; dis:Dis|fre[17..26]                    ; Lost fanout        ;
+; Total Number of Removed Registers = 10 ;                    ;
++----------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 96    ;
+; Number of registers using Synchronous Clear  ; 70    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 53    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 40    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |ultrasonic|dis:Dis|th[3]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |ultrasonic|cm[12]         ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |ultrasonic|cm_cont[0]     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 16                          ;
+; cycloneiii_ff         ; 96                          ;
+;     CLR               ; 1                           ;
+;     CLR SCLR          ; 36                          ;
+;     ENA               ; 24                          ;
+;     ENA CLR SCLR      ; 16                          ;
+;     SCLR              ; 18                          ;
+;     plain             ; 1                           ;
+; cycloneiii_lcell_comb ; 110                         ;
+;     arith             ; 65                          ;
+;         2 data inputs ; 65                          ;
+;     normal            ; 45                          ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 3                           ;
+;         4 data inputs ; 30                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 2.27                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -162,7 +299,7 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Tue Feb 18 17:34:58 2025
+    Info: Processing started: Tue Feb 25 15:25:56 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ultrasonic -c ultrasonic
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -173,35 +310,27 @@ Info (12021): Found 1 design units, including 1 entities, in source file BCDtoSS
 Info (12021): Found 1 design units, including 1 entities, in source file ultrasonic.v
     Info (12023): Found entity 1: ultrasonic File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 1
 Info (12127): Elaborating entity "ultrasonic" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at ultrasonic.v(32): truncated value with size 32 to match size of target (22) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Warning (10230): Verilog HDL assignment warning at ultrasonic.v(33): truncated value with size 32 to match size of target (12) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 33
-Warning (10230): Verilog HDL assignment warning at ultrasonic.v(36): truncated value with size 32 to match size of target (16) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 36
-Warning (10240): Verilog HDL Always Construct warning at ultrasonic.v(25): inferring latch(es) for variable "enable", which holds its previous value in one or more paths through the always construct File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 25
-Info (10041): Inferred latch for "enable" at ultrasonic.v(25) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 25
-Error (10028): Can't resolve multiple constant drivers for net "cm[15]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10029): Constant driver at ultrasonic.v(15) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 15
-Error (10028): Can't resolve multiple constant drivers for net "cm[14]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[13]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[12]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[11]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[10]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[9]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[8]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[7]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[6]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[5]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[4]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[3]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[2]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[1]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm[0]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm_cont[11]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (10028): Can't resolve multiple constant drivers for net "cm_cont[10]" at ultrasonic.v(32) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 32
-Error (12153): Can't elaborate top-level user hierarchy
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 20 errors, 5 warnings
-    Error: Peak virtual memory: 337 megabytes
-    Error: Processing ended: Tue Feb 18 17:35:07 2025
-    Error: Elapsed time: 00:00:09
-    Error: Total CPU time (on all processors): 00:00:16
+Warning (10230): Verilog HDL assignment warning at ultrasonic.v(22): truncated value with size 32 to match size of target (24) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 22
+Warning (10230): Verilog HDL assignment warning at ultrasonic.v(23): truncated value with size 32 to match size of target (12) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 23
+Warning (10230): Verilog HDL assignment warning at ultrasonic.v(26): truncated value with size 32 to match size of target (16) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 26
+Info (12128): Elaborating entity "dis" for hierarchy "dis:Dis" File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/ultrasonic.v Line: 13
+Warning (10036): Verilog HDL or VHDL warning at dis.v(13): object "start" assigned a value but never read File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v Line: 13
+Warning (10036): Verilog HDL or VHDL warning at dis.v(19): object "test" assigned a value but never read File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v Line: 19
+Warning (10230): Verilog HDL assignment warning at dis.v(29): truncated value with size 32 to match size of target (27) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v Line: 29
+Warning (10230): Verilog HDL assignment warning at dis.v(35): truncated value with size 32 to match size of target (2) File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v Line: 35
+Info (12128): Elaborating entity "BCDtoSSeg" for hierarchy "dis:Dis|BCDtoSSeg:bcd" File: /home/mac4/Descargas/entrega-proyecto-2024-2-grupo01-2024-2/src/dis.v Line: 21
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 10 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 141 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 125 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 390 megabytes
+    Info: Processing ended: Tue Feb 25 15:26:06 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:17
 
 
