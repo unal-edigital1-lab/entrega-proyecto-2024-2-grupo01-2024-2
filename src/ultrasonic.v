@@ -3,13 +3,12 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable);
     input reset;
     input echo;             
     output reg trigger=0;
-    reg [0:15] cm=0;
+    reg [15:0] cm=0;
     output [3:0] an;
     output [0:6] seg;
-    reg [21:0] counter;
+    reg [23:0] counter;
     reg [11:0] cm_cont;
     input enable;
-    reg last=0;
 
     dis Dis(.an(an),.clk(clk),.number(cm),.seg(seg),.rst(reset));
 
@@ -22,10 +21,6 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable);
         end else begin
             counter <= counter + 1;
             cm_cont<=cm_cont+1;
-            if (last!=echo) begin
-                counter <= 0;
-                cm_cont <=0;
-            end
             if (cm_cont>=2900 && enable==1 && echo==1) begin
                 cm_cont<=0;
                 cm<=cm+1;
@@ -40,8 +35,9 @@ module ultrasonic(clk,reset,echo,trigger,an,seg, enable);
             // Reiniciar el ciclo cada 50 ms (~2,500,000 ciclos a 50 MHz)
             if (counter >= 5000000) begin
                 counter <= 0;
+                cm_cont <=0;
+                cm<=0;
             end
-            last<=echo;
         end
     end
 endmodule
