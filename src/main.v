@@ -14,7 +14,7 @@ module main (clk,reset,echo,trigger,an,seg, enable,mosi,sclk,cs,act);
     output mosi;
     output sclk;
     output cs;
-    input [1:0] act;
+    input [2:0] act;
 
     ultrasonic ultra(.clk(clk),.reset(reset),.echo(echo),.trigger(trigger),.an(an),.seg(seg),.enable(enable),.true_cm(true_cm),.otros({tiempo,state}));
     //matriz_caras2 caras(.clk(clk),.reset(reset),.state(state),.mosi(mosi),.sclk(sclk),.cs(cs));
@@ -33,8 +33,7 @@ module main (clk,reset,echo,trigger,an,seg, enable,mosi,sclk,cs,act);
             if (tiempo>=60) begin
                 state=1;
                 tiempo<=0;
-            end 
-            if(enable==1 && true_cm<=5 ) begin
+            end else if(enable==1 && true_cm<=5 && act[2]==1 ) begin
                 tiempo<=0;
                 state<=2;
             end else if (act[0]==1 && state==2) begin
