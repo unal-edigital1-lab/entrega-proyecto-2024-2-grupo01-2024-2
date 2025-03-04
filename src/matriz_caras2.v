@@ -3,7 +3,7 @@
 module matriz_caras2 (
     input clk,                // Reloj del sistema
     input reset,              // Señal de reset
-    input [1:0] state,        // Selector de patrones de LED
+    input [3:0] state,        // Selector de patrones de LED
     output mosi,              // Master Out Slave In (Din)
     output sclk,              // Reloj SPI
     output cs                 // Chip Select
@@ -53,11 +53,11 @@ module matriz_caras2 (
         memory4CommandSend[1] = 8'h01;  // Shutdown Normal Operation
         memory4CommandSend[2] = 8'h09;  // Decode-Mode
         memory4CommandSend[3] = 8'h00;  // Decode-Mode No decode for digits 7–0
-		  memory4CommandSend[4] = 8'h0A;  // Intensity
-		  memory4CommandSend[5] = 8'h0A;  // Intensity value
+		memory4CommandSend[4] = 8'h0A;  // Intensity
+		memory4CommandSend[5] = 8'h0A;  // Intensity value
         memory4CommandSend[6] = 8'h0B;  // Scan Limit
         memory4CommandSend[7] = 8'h07;  // Scan Limit Value
-		  memory4CommandSend[8] = 8'h0F;  // Display Test 
+		memory4CommandSend[8] = 8'h0F;  // Display Test 
         memory4CommandSend[9] = 8'h00;  // Display Test Value
 
         // Patrón 1 - Feliz
