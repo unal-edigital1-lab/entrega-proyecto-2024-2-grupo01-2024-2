@@ -35,16 +35,14 @@ module main (clk,reset,echo,trigger,an,seg, enable,mosi,sclk,cs,act);
                 state=1;
                 tiempo<=0;
                 stop<=0;
-            end else if(enable==0 && true_cm<=5) begin
+            end else if(enable==0 && true_cm<=5 && stop==0) begin
                 tiempo<=0;
                 state<=2;
                 stop<=1;
             end else if (act[0]==1 && state==2) begin
                 state<=3;
-                stop<=0;
             end else if(act[1]==1 && state==3)begin
                 state<=0;
-                stop<=0;
             end
         end
     end

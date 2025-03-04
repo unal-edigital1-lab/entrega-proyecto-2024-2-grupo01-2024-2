@@ -11,6 +11,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros,stop);
     input enable;
     output reg [15:0] true_cm=0;
     input [15:0] otros;
+    input stop;
 
     dis Dis(.an(an),.clk(clk),.number({otros,true_cm}),.seg(seg),.rst(reset));
 
@@ -43,6 +44,9 @@ module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros,stop);
             end
             if (stop) begin
                 true_cm<=0;
+                counter <= 0;
+                cm_cont <=0;
+                cm<=0;
             end
         end
     end
