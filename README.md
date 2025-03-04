@@ -1,7 +1,7 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=17798957&assignment_repo_type=AssignmentRepo)
 # Entrega 1 del proyecto WP01
 * Jose Luis Ocoro Banguera
-* Alejandro
+* Alejandro Jiménez Zabala
 * Mateo
 
 ## Introducción
@@ -300,9 +300,14 @@ Dado que trabajamos con un reloj de 50 MHz, esto nos dio una equivalencia de 5,0
 
 ### Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
+
 #### Diagrama de caja negra
 
 ![TamagotchiCN](https://github.com/user-attachments/assets/a02d9bc4-76aa-4778-aab9-fff992520077)
+
+#### Diagrama de caja gris
+
+![CajaGrisTamagotchi](https://github.com/user-attachments/assets/5a8425dc-d880-4a37-be2f-d654b34de4fd)
 
 #### Descripción de la Interacción: 
 * Módulo ultrasonic – Detección de Proximidad
