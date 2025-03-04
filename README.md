@@ -378,62 +378,64 @@ endmodule
 
 Inicia definiendo entradas y salidas, los cuales serían los datos con los que se comunican el Master con el Slave, iniciando la transmisión de datos, habilitando o deshabilitando el encendido de la matriz, y almacenando los datos de salida.
 
-### Módulo de máquina de estados (matriz_caras2.v)
+### Módulo de máquina de estados (matriz_caras3.v)
 
 Se propone una máquina de estados para definir las expresiones que tendría la cara de nuestra mascota, lo que nos permitiría dividir el código de una forma comprensible para diferenciar los casos que podrían ser almacenados en la memoria.
 
 #### Código:
 
 ```verilog
-module matriz_caras2 (
-    input clk,                // Reloj del sistema
-    input reset,              // Señal de reset
-    input [3:0] state,        // Selector de patrones de LED
-    output mosi,              // Master Out Slave In (Din)
-    output sclk,              // Reloj SPI
-    output cs                 // Chip Select
+
+module matriz_caras3 (
+	input clk,             // Reloj del sistema
+    	input reset,           // Señal de reset
+    	input [3:0] state,     // Datos de entrada para enviar
+	output  mosi,          // Master Out Slave In (Din)
+    	output  sclk,          // Reloj SPI
+	output  cs            // Chip Select
+
+  
 );
 
-    reg [7:0] data_in;
-    wire [7:0] data_out;
+   reg [7:0] data_in;
+   wire [7:0] data_out;
+ 
+   reg start;
+   wire busy;
+   wire avail;
+  
+   wire [25:0] div_factor = 25000000;  // Factor de división fijo
 
-    reg start;
-    wire busy;
-    wire avail;
-
-    wire [25:0] div_factor = 25000000;  // Factor de división fijo
-
-    spi_master spi (
-        .clk(clk),
-        .reset(~reset),
-        .data_in(data_in),
-        .start(start),
-        .div_factor(div_factor),
-        .mosi(mosi),
-        .sclk(sclk),
-        .cs(cs),
-        .data_out(data_out),
-        .busy(busy),
-        .avail(avail)
-    );
-
-    // Memorias para diferentes patrones de LEDs
+	spi_master spi (
+       .clk(clk),
+       .reset(~reset),
+       .data_in(data_in),
+       .start(start),
+       .div_factor(div_factor),
+       .mosi(mosi),
+       .sclk(sclk),
+       .cs(cs),
+       .data_out(data_out),
+       .busy(busy),
+       .avail(avail)
+   );
+  
+	// Memorias para diferentes patrones de LEDs
     reg [7:0] patron1 [7:0];  // Patrón 1
     reg [7:0] patron2 [7:0];  // Patrón 2
     reg [7:0] patron3 [7:0];  // Patrón 3
     reg [7:0] patron4 [7:0];  // Patrón 4
+	
+	reg [7:0] memory4CommandSend [0:30];
 
-    reg [4:0] memory4CommandSend [17:0]; // Buffer de datos a enviar
+	reg [5:0] mem_index = 0;
+	 
+	reg sendByte;
+	reg [10:0] state_send=0;
+	reg [1:0] prev_state = 2'b00; 
 
-    reg [5:0] mem_index = 0;
-    reg sendByte;
-    reg [10:0] state_send = 0;
-    reg [1:0] prev_state = 2'b00;  // Para detectar cambios en el estado externo
-
-    // Inicialización de patrones
-    initial begin
-        
-        //Boot Matriz
+	
+	initial begin
         memory4CommandSend[0] = 8'h0C;  // Shutdown command
         memory4CommandSend[1] = 8'h01;  // Shutdown Normal Operation
         memory4CommandSend[2] = 8'h09;  // Decode-Mode
@@ -445,7 +447,8 @@ module matriz_caras2 (
 	memory4CommandSend[8] = 8'h0F;  // Display Test 
         memory4CommandSend[9] = 8'h00;  // Display Test Value
 
-        // Patrón 1 - Feliz
+		
+	// Patrón 1 - Feliz
         patron1[0] = 8'b11111111;
         patron1[1] = 8'b10000001;
         patron1[2] = 8'b10100101;
@@ -484,9 +487,10 @@ module matriz_caras2 (
         patron4[5] = 8'b10011001;
         patron4[6] = 8'b10011001;
         patron4[7] = 8'b11111111;
+		
     end
-
-    // Detectar cambios en `state` y actualizar `memory4CommandSend`
+	 reg [1:0] state_old;   
+	    // Detectar cambios en `state` y actualizar `memory4CommandSend`
     always @(posedge clk) begin
         if (reset) begin
             prev_state <= state; // Almacena el estado actual
@@ -541,60 +545,69 @@ module matriz_caras2 (
         
         end
     end
+	
+	reg [1:0] c2=0;
+	
+	
+   always @(posedge clk) begin
+		 if (~reset) begin
+           state_send <= 0;
+           sendByte <= 0;
+			  mem_index <= 0;
+       end else begin
+		 case (state_send)
+			0:	begin
+				data_in <= memory4CommandSend[mem_index]; 
+				sendByte <=1; 
+				state_send <= 1;
+				end
+			1: begin
+				state_send <= 2;
+				end
+			2: begin
+				sendByte <=0; 
+				if (avail) begin
+					state_send <= 0;	
+   				mem_index <= mem_index+1;
+					if (mem_index > 24)begin
+						  mem_index <= 10;	
+						 state_send <= 3;	
+  
+					end
+				end
+				end
+			3: begin 
+				  mem_index <= 0;	
+				if (state_old != state)  begin
+				 state_old <= state;
+				 state_send <= 0;
+				end
+				
+			end 
+			endcase
+			end
+	end
 
-    // Máquina de estados para transmisión SPI
-    always @(posedge clk) begin
-        if (~reset) begin
-            state_send <= 0;
-            sendByte <= 0;
-            mem_index <= 0;
-        end else begin
-            case (state_send)
-                0: begin
-                    data_in <= memory4CommandSend[mem_index]; 
-                    sendByte <= 1; 
-                    state_send <= 1;
-                end
-                1: begin
-                    state_send <= 2;
-                end
-                2: begin
-                    sendByte <= 0; 
-                    if (avail) begin
-                        state_send <= 0;    
-                        mem_index <= mem_index + 1;
-                        if (mem_index > 7) begin
-                            mem_index <= 0;    
-                            state_send <= 3;    
-                        end
-                    end
-                end
-                3: begin 
-                    mem_index <= 0;            
-                end 
-            endcase
-        end
-    end
-
-    // Envío de un byte por SPI
-    always @(negedge clk) begin
-        if (~reset) begin
-            start <= 0;
-        end else begin
-            case (start)
-                0: begin  // IDLE
-                    if (!busy && sendByte) begin
-                        start <= 1;
-                    end
-                end
-                1: begin  // SEND
-                    if (avail) begin
-                        start <= 0;
-                    end
-                end
-            endcase
-        end
-    end
+	
+	// para enviar un byte por spi
+   always @(negedge clk) begin
+		 if (~reset) begin
+           start <= 0;
+       end else begin
+           case(start)
+               0: begin  // IDLE
+                   if (!busy && sendByte) begin
+                       start <= 1;
+                   end
+               end
+               1: begin  // SEND
+                   if (avail) begin
+                       start <= 0;
+                   end
+               end
+           endcase
+       end
+   end
 endmodule
 ```
 
@@ -607,6 +620,8 @@ Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las p
 ![PIXILS](https://github.com/user-attachments/assets/463da43b-6ecd-430a-8b8a-a06dd97189aa)
 
 Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 17) a cada secuencia; para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
+
+Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior (prev_state), y así ejecuto el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
