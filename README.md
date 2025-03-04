@@ -602,9 +602,11 @@ Entre las entradas del código tenemos una denominado "state", el cual hace refe
 
 Hacemos el llamado al módulo "spi_master.v" para la comunicación entre la tarjeta FPGA y la matriz 8x8.
 
-Definimos 4 patrones distintos que podrás ser enviados a la matriz, los cuales son las caras feliz (superior izquierda), triste (superior derecha), enojada (inferior izquierda), y dormida (inferior derecha).
+Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las posiciones 0 a 9, para hacer el encendido inicial de la matriz con las configuraciones previamente especificada; con esto procedemos a definir 4 patrones distintos que podrás ser enviados a la matriz, los cuales son las caras feliz (superior izquierda), triste (superior derecha), enojada (inferior izquierda), y dormida (inferior derecha).
 
 ![PIXILS](https://github.com/user-attachments/assets/463da43b-6ecd-430a-8b8a-a06dd97189aa)
+
+Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 17) a cada secuencia; para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
