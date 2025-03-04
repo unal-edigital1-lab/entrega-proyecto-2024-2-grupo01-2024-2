@@ -49,7 +49,7 @@ Los usuarios podrán interactuar con la mascota a través la detección de movim
 ### Módulo: BCDtoSSeg
 
 ### codigo: 
-´´´ verilog 
+''' verilog 
 module BCDtoSSeg (BCD, SSeg);
 
   input [3:0] BCD;
@@ -78,7 +78,7 @@ module BCDtoSSeg (BCD, SSeg);
   end
 
 endmodule
-´´´
+'''
 
 
 #### Diagrama de caja negra
