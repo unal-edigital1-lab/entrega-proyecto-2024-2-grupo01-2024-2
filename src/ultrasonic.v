@@ -9,7 +9,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros,stop);
     reg [23:0] counter;
     reg [11:0] cm_cont;
     input enable;
-    output reg [15:0] true_cm=0;
+    output reg [15:0] true_cm=10;
     input [15:0] otros;
     input stop;
 
@@ -43,7 +43,7 @@ module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros,stop);
                 cm<=0;
             end
             if (stop) begin
-                true_cm<=0;
+                true_cm<=10;
                 counter <= 0;
                 cm_cont <=0;
                 cm<=0;
