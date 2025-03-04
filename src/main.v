@@ -24,14 +24,15 @@ module main (clk,reset,echo,trigger,an,seg, enable,mosi,sclk,cs,act);
         if (reset==1) begin
             tiempo<=0;
             contador<=0;
-            state<=0;
+            state<=1;
+            stop=0;
         end else begin
             contador<=contador+1;
             if (contador >= 50000000) begin
                 contador <= 0;
                 tiempo<=tiempo+1;
             end
-            if (tiempo>=30) begin
+            if (tiempo>=60) begin
                 state<=1;
                 tiempo<=0;
                 stop<=0;
