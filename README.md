@@ -598,6 +598,14 @@ module matriz_caras2 (
 endmodule
 ```
 
+Entre las entradas del código tenemos una denominado "state", el cual hace referencia al patrón que será mostrado en la matriz.
+
+Hacemos el llamado al módulo "spi_master.v" para la comunicación entre la tarjeta FPGA y la matriz 8x8.
+
+Definimos 4 patrones distintos que podrás ser enviados a la matriz, los cuales son las caras feliz (superior izquierda), triste (superior derecha), enojada (inferior izquierda), y dormida (inferior derecha).
+
+![PIXILS](https://github.com/user-attachments/assets/463da43b-6ecd-430a-8b8a-a06dd97189aa)
+
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
 
