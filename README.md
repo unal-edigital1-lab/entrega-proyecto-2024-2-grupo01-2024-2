@@ -1,12 +1,17 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=17798957&assignment_repo_type=AssignmentRepo)
 # Entrega 1 del proyecto WP01
+* Jose Luis Ocoro Banguera
+* Alejandro
+* Mateo
 
 ## Introducción
-Como proyecto para la clase de Electrónica Digital I se decidió hacer un tamagotchi por medio de la tarjeta FPGA, el cual con funciones y variables definidas tendría el potencial no solo para aplicar temas vistos en clase, sino tambien aprender del uso de más elementos que se usen en proyectos de electrónica; con la finalidad de obtener un elemento intuitivo para cualquier persona que intente manipularlo, mientras que para los que realizamos el proyecto sea una profundización práctica de la temática de clase.
+Para la asignatura de Electrónica Digital I, hemos decidido desarrollar un Tamagotchi implementado en una FPGA. Este sistema nos permitirá simular la interacción y el cuidado de una mascota virtual mediante una combinación de sensores, botones y una interfaz visual sencilla pero efectiva.
+
+Nuestro proyecto no solo nos permitirá aplicar los conceptos vistos en clase, sino que también nos dará la oportunidad de explorar el uso de elementos adicionales en el diseño digital, como sensores, displays y estructuras de control basadas en máquinas de estado finito (FSMs). Nuestro objetivo es crear un sistema intuitivo para el usuario y, al mismo tiempo, profundizar en el diseño de hardware digital aplicado a sistemas de entretenimiento.
 
 ## Objetivos
 ### General
-Realizar un sistema de entretenimiento inspirado en los "tamagotchi", el cual consiste en el cuidado y manutención de una mascota virtual.
+Desarrollar un sistema de entretenimiento basado en el concepto de Tamagotchi, en el que los usuarios puedan interactuar con una mascota virtual y atender sus necesidades a través de un sistema digital implementado en FPGA.
 
 ### Específicos
 - **a)** Aplicar conocimientos adquiridos de electrónica digital para la correcta implementación de las funciones que se asignen en el sistema.
