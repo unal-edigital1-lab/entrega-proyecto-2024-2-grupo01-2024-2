@@ -1,7 +1,7 @@
 module fsm_matriz8x8 (
 	input clk,                // Reloj del sistema
     input reset,              // Señal de reset
-    input [1:0] state,      // Datos de entrada para enviar
+    input [3:0] state,      // Datos de entrada para enviar
 	output  mosi,               // Master Out Slave In (Din)
     output  sclk,          // Reloj SPI
     output  cs            // Chip Select
