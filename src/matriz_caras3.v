@@ -1,12 +1,12 @@
-//`include "src\spi_master.v"
+`include "src\spi_master.v"
 
 module matriz_caras3 (
-	input clk,                // Reloj del sistema
-    input reset,              // Señal de reset
-    input [3:0] state,      // Datos de entrada para enviar
-	output  mosi,               // Master Out Slave In (Din)
+	input clk,             // Reloj del sistema
+    input reset,           // Señal de reset
+    input [3:0] state,     // Datos de entrada para enviar
+	output  mosi,          // Master Out Slave In (Din)
     output  sclk,          // Reloj SPI
-    output  cs            // Chip Select
+    output  cs             // Chip Select
 
   
 );

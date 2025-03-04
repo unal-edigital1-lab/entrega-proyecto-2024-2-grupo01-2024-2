@@ -1,7 +1,7 @@
 module fsm_matriz8x8 (
 	input clk,                // Reloj del sistema
     input reset,              // Señal de reset
-    input [1:0] state,      // Datos de entrada para enviar
+    input [3:0] state,      // Datos de entrada para enviar
 	output  mosi,               // Master Out Slave In (Din)
     output  sclk,          // Reloj SPI
     output  cs            // Chip Select
@@ -33,13 +33,19 @@ module fsm_matriz8x8 (
        .avail(avail)
    );
   
-   
+	// Memorias para diferentes patrones de LEDs
+    reg [7:0] patron1 [7:0];  // Patrón 1
+    reg [7:0] patron2 [7:0];  // Patrón 2
+    reg [7:0] patron3 [7:0];  // Patrón 3
+    reg [7:0] patron4 [7:0];  // Patrón 4
+	
 	reg [7:0] memory4CommandSend [0:30];
 
 	reg [5:0] mem_index = 0;
 	 
 	reg sendByte;
 	reg [10:0]state_send=0;
+	reg [1:0] prev_state = 2'b00; 
 
 	
 	initial begin
@@ -55,26 +61,124 @@ module fsm_matriz8x8 (
         memory4CommandSend[9] = 8'h00;  // Display Test Value
 		  
 		  
-		memory4CommandSend[10] = 8'h02;  // 
-        memory4CommandSend[11] = 8'hFF;  // 255
-        memory4CommandSend[12] = 8'h03;  // 
-        memory4CommandSend[13] = 8'h7f;  // 127
-        memory4CommandSend[14] = 8'h04;  // 
-        memory4CommandSend[15] = 8'h3c;  // 60
-        memory4CommandSend[16] = 8'h05;  // 
-        memory4CommandSend[17] = 8'h55;  // 85
-        memory4CommandSend[18] = 8'h06;  // 
-        memory4CommandSend[19] = 8'hAA;  // 170
-        memory4CommandSend[20] = 8'h07;  // 
-        memory4CommandSend[21] = 8'h0f;  // 15
-        memory4CommandSend[22] = 8'h08;  // 
-        memory4CommandSend[23] = 8'hf0;  // 240
-        memory4CommandSend[24] = 8'h01;  //  Digital 1
-        memory4CommandSend[25] = 8'hff;  // 255
-	  
+		  //memory4CommandSend[10] = 8'h02;  // 
+        //memory4CommandSend[11] = 8'hFF;  // 255
+        //memory4CommandSend[12] = 8'h03;  // 
+        //memory4CommandSend[13] = 8'h7f;  // 127
+        //memory4CommandSend[14] = 8'h04;  // 
+        //memory4CommandSend[15] = 8'h3c;  // 60
+        //memory4CommandSend[16] = 8'h05;  // 
+        //memory4CommandSend[17] = 8'h55;  // 85
+        //memory4CommandSend[18] = 8'h06;  // 
+        //memory4CommandSend[19] = 8'hAA;  // 170
+        //memory4CommandSend[20] = 8'h07;  // 
+        //memory4CommandSend[21] = 8'h0f;  // 15
+        //memory4CommandSend[22] = 8'h08;  // 
+        //memory4CommandSend[23] = 8'hf0;  // 240
+        //memory4CommandSend[24] = 8'h01;  //  Digital 1
+        //memory4CommandSend[25] = 8'hff;  // 255
+		
+		  // Patrón 1 - Feliz
+        patron1[0] = 8'b11111111;
+        patron1[1] = 8'b10000001;
+        patron1[2] = 8'b10100101;
+        patron1[3] = 8'b10000001;
+        patron1[4] = 8'b10100101;
+        patron1[5] = 8'b10011001;
+        patron1[6] = 8'b10000001;
+        patron1[7] = 8'b11111111;
+
+        // Patrón 2 - Triste
+        patron2[0] = 8'b11111111;
+        patron2[1] = 8'b10000001;
+        patron2[2] = 8'b10100101;
+        patron2[3] = 8'b10000001;
+        patron2[4] = 8'b10011001;
+        patron2[5] = 8'b10100101;
+        patron2[6] = 8'b10000001;
+        patron2[7] = 8'b11111111;
+
+        // Patrón 3 - Enojado
+        patron3[0] = 8'b11111111;
+        patron3[1] = 8'b11000011;
+        patron3[2] = 8'b10100101;
+        patron3[3] = 8'b10100101;
+        patron3[4] = 8'b10000001;
+        patron3[5] = 8'b10011001;
+        patron3[6] = 8'b10100101;
+        patron3[7] = 8'b11111111;
+
+        // Patrón 4 - Dormido
+        patron4[0] = 8'b11111111;
+        patron4[1] = 8'b10000001;
+        patron4[2] = 8'b10000001;
+        patron4[3] = 8'b11100111;
+        patron4[4] = 8'b10000001;
+        patron4[5] = 8'b10011001;
+        patron4[6] = 8'b10011001;
+        patron4[7] = 8'b11111111;
+		
+    end
+	 reg [1:0] state_old;   
+	    // Detectar cambios en `state` y actualizar `memory4CommandSend`
+    always @(posedge clk) begin
+        if (reset) begin
+            prev_state <= state; // Almacena el estado actual
+            case (state)
+                2'b00: begin
+                    memory4CommandSend[10]  = patron1[0];
+                    memory4CommandSend[11]  = patron1[1] ;
+                    memory4CommandSend[12]  = patron1[2] ;
+                    memory4CommandSend[13]  = patron1[3] ;
+                    memory4CommandSend[14]  = patron1[4] ;
+                    memory4CommandSend[15]  = patron1[5] ;
+                    memory4CommandSend[16]  = patron1[6] ;
+                    memory4CommandSend[17]  = patron1[7] ;
+
+                end
+                2'b01: begin
+                    memory4CommandSend[10]  = patron2[0];
+                    memory4CommandSend[11]  = patron2[1] ;
+                    memory4CommandSend[12]  = patron2[2] ;
+                    memory4CommandSend[13]  = patron2[3] ;
+                    memory4CommandSend[14]  = patron2[4] ;
+                    memory4CommandSend[15]  = patron2[5] ;
+                    memory4CommandSend[16]  = patron2[6] ;
+                    memory4CommandSend[17]  = patron2[7] ;
+
+                end
+                2'b10: begin
+                    memory4CommandSend[10]  = patron3[0];
+                    memory4CommandSend[11]  = patron3[1] ;
+                    memory4CommandSend[12]  = patron3[2] ;
+                    memory4CommandSend[13]  = patron3[3] ;
+                    memory4CommandSend[14]  = patron3[4] ;
+                    memory4CommandSend[15]  = patron3[5] ;
+                    memory4CommandSend[16]  = patron3[6] ;
+                    memory4CommandSend[17]  = patron3[7] ;
+
+                end
+            
+                2'b11: begin
+                    memory4CommandSend[10]  = patron4[0];
+                    memory4CommandSend[11]  = patron4[1] ;
+                    memory4CommandSend[12]  = patron4[2] ;
+                    memory4CommandSend[13]  = patron4[3] ;
+                    memory4CommandSend[14]  = patron4[4] ;
+                    memory4CommandSend[15]  = patron4[5] ;
+                    memory4CommandSend[16]  = patron4[6] ;
+                    memory4CommandSend[17]  = patron4[7] ;
+
+                end
+                
+            endcase
+        
+        end
     end
 	
 	reg [1:0] c2=0;
+	
+	
    always @(posedge clk) begin
 		 if (~reset) begin
            state_send <= 0;
@@ -103,7 +207,12 @@ module fsm_matriz8x8 (
 				end
 				end
 			3: begin 
-				  mem_index <= 0;			
+				  mem_index <= 0;	
+				if (state_old != state)  begin
+				 state_old <= state;
+				 state_send <= 0;
+				end
+				
 			end 
 			endcase
 			end

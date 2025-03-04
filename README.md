@@ -621,7 +621,7 @@ Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las p
 
 Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 17) a cada secuencia; para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
 
-Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior (prev_state), y así ejecuto el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
+Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior (prev_state), y que detecte un cambio de estado, para actualizar la memoria (state_old), y así ejecutar el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
