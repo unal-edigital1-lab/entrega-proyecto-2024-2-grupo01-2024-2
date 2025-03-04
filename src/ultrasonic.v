@@ -1,4 +1,4 @@
-module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros);
+module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros,stop);
     input clk;
     input reset;
     input echo;             
@@ -40,6 +40,9 @@ module ultrasonic(clk,reset,echo,trigger,an,seg,enable,true_cm,otros);
                 counter <= 0;
                 cm_cont <=0;
                 cm<=0;
+            end
+            if (stop) begin
+                true_cm<=0;
             end
         end
     end
