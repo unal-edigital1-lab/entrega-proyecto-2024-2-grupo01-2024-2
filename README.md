@@ -14,47 +14,72 @@ Nuestro proyecto no solo nos permitirá aplicar los conceptos vistos en clase, s
 Desarrollar un sistema de entretenimiento basado en el concepto de Tamagotchi, en el que los usuarios puedan interactuar con una mascota virtual y atender sus necesidades a través de un sistema digital implementado en FPGA.
 
 ### Específicos
-- **a)** Aplicar conocimientos adquiridos de electrónica digital para la correcta implementación de las funciones que se asignen en el sistema.
-- **b)** Definir métodos para facilitar el uso del sistema con una interfaz intuitiva para el usuario.
-- **c)** Complementar las funciones del sistema con elementos visuales para un uso más interactivo.
+- **a)** Aplicar los conocimientos adquiridos en electrónica digital para implementar correctamente las funciones del sistema.
+- **b)** Diseñar una interfaz de usuario intuitiva, facilitando la interacción con la mascota virtual.
+- **c)** Implementar elementos visuales dinámicos que representen los estados y necesidades de la mascota.
 
 ## Descripción del Sistema
-Se implementaría un sistema de juego de simulación de cuidado de una mascota virtual, más conocido como "Tamagotchi", en el que se emularían diferentes estados de dicha mascota, y el usuario interactuaría con el sistema para mantener a su mascota en buen estado.
+Nuestro sistema consiste en un juego de simulación de cuidado de una mascota virtual, donde los usuarios deberán interactuar con el Tamagotchi para mantenerlo en buen estado. La mascota pasará por diferentes estados en función de las acciones realizadas y las condiciones del entorno.
 
 ### Partes del sistema
 #### Sensores
-1. **Sensor Ultrasonido:** Detectaría proximidad y movimiento, el cual apoyaría el cambio de estados de la mascota dependiendo de si el usuario está manipulando el sistema, o esta en reposo.
-2. **Sensor de Luz:** Proporcionaría una funcionalidad de ciclos diurnos y nocturnos, que influirían en la variacion de las necesidades de los estados y necesidades de la mascota, por ejemplo, para que cuando esté en un ambiente a oscuras, la mascota se duerma automáticamente y no surja la necesidad de comer.
+1. **Sensor Ultrasonido:** Detectará la proximidad y el movimiento del usuario, influyendo en los estados de la mascota.
 
 #### Botones
-1. **Reinicio:** Restauraría el sistema a sus valores por defecto.
-2. **Botones de interacción:** Botones destinados para que el usuario ejecute determinadas acciones directas con la mascota, como dar de comer, y limpiar.
-
+1. **Reinicio(reset):** Restablecerá el sistema a sus valores predeterminados.
 ### Visualización de la mascota
-#### Matriz de puntos 8x8
-En ésta matriz se configuraria las imágenes de la mascota, las cuales cambiarían según el estado de la mascota para brindar una ayuda visual que indique qué necesidad tiene, para que el usuario sepa qué interacción hacer para suplir dicha necesidad, por lo que esta sería nuestra visualización principal.
-
-#### Display de 7 segmentos
-Proporcionaría un complemento a la visualización principal, donde se configuraría cada estado de la mascota, con un determinado nivel, o puntaje, donde tendría diferentes rangos que activarían las animaciones a la necesidad que requiera la mascota. 
-
+#### Matriz de puntos 8x8: 
+* Se encargara de mostrar imágenes que representarán el estado de la mascota y proporcionarán retroalimentación visual sobre sus necesidades.
+#### Display de 7 segmentos: 
+* Representará variables como niveles de hambre o energía, complementando la visualización principal.
 ### Estados de la mascota
-#### Hambre
-Generado a lo largo del día, con variaciones conforme pasa el tiempo. Dichas variaciones quedarían en pausa mientras la mascota duerme.
-#### Sueño
-Estado que se generaría luego de un tiempo largo con el sistema activo, el cual se solucionaría dejando el sistema en un ambiente de baja iluminación, dejando que la mascota duerma y recargue energías.
-#### Durmiendo
-Se daría solamente en un ambiente de baja iluminación, o en la noche, el cual dejaría el sistema en un estado de reposo, donde el único cambio que habría sería la recarga de energía de la mascota.
-#### Energético
-Generado al tener nivel o puntaje alto de energía, el cual se solucionaría jugando con la mascota.
 #### Feliz
-Indicaría que la mascota está a gusto y no requiere de ningun tipo de cuidado o atención en el momento.
+La mascota se encontrará en este estado cuando haya interacción frecuente con el usuario. Se mostrará una expresión animada en la matriz de LEDs, indicando que está en buen estado y satisfecha. Este es el estado óptimo en el que se busca mantener a la mascota.
 #### Triste
-Estado que se daría luego de cierto tiempo en que la mascota no reciba ninguna atención luego de requerir una necesitad como comida o dormir.
+Si la mascota pasa mucho tiempo sin detectar movimiento cercano, entrará en estado de tristeza. En este estado, se representará una expresión de tristeza en la matriz de LEDs y su nivel de actividad en el display de 7 segmentos disminuirá. Para devolverla al estado "Feliz", será necesario que el usuario se acerque nuevamente.
+#### Enojado
+La mascota se enojará si detecta movimientos bruscos y repetitivos en un corto período de tiempo, como si el usuario estuviera acercando y alejando la mano rápidamente. En este estado, se mostrará una expresión de enojo en la matriz de LEDs, y el sistema tardará un tiempo en permitir que la mascota vuelva a su estado normal, incluso si el usuario deja de hacer movimientos bruscos.
+#### Dormido
+Si la mascota pasa un tiempo prolongado sin detectar movimiento, entrará en estado de sueño. En este estado, la mascota permanecerá inactiva y su animación en la matriz de LEDs reflejará que está dormida. Para despertarla, el usuario deberá acercarse nuevamente.
 
 ### Interacciones del usuario
-Se definirían botones y acciones captadas por sensores que recibiría el sistema, e interpretaría para ejecutar funciones definidas en el sistema para que se dén interacciones entre la mascota y el usuario.
+Los usuarios podrán interactuar con la mascota a través la detección de movimiento mediante sensores. Estas interacciones afectarán los estados de la mascota, generando respuestas visuales en la matriz de LEDs y en el display de 7 segmentos.
 
 ### Arquitectura del sistema
+### Módulo: BCDtoSSeg
+
+### codigo: 
+´´´ verilog 
+module BCDtoSSeg (BCD, SSeg);
+
+  input [3:0] BCD;
+  output reg [0:6] SSeg; // se puede definir de 0 a 6, o de 6 a 0, cambiando posición del bit más significativo
+
+  always @ ( * ) begin
+    case (BCD)
+      4'b0000: SSeg = 7'b0000001; // "0"  
+      4'b0001: SSeg = 7'b1001111; // "1" 
+      4'b0010: SSeg = 7'b0010010; // "2" 
+      4'b0011: SSeg = 7'b0000110; // "3" 
+      4'b0100: SSeg = 7'b1001100; // "4" 
+      4'b0101: SSeg = 7'b0100100; // "5" 
+      4'b0110: SSeg = 7'b0100000; // "6" 
+      4'b0111: SSeg = 7'b0001111; // "7" 
+      4'b1000: SSeg = 7'b0000000; // "8"  
+      4'b1001: SSeg = 7'b0000100; // "9" 
+      4'b1010: SSeg = 7'b0001000; // "A"
+      4'b1011: SSeg = 7'b1100000; // "b"
+      4'b1100: SSeg = 7'b0110001; // "c"
+      4'b1101: SSeg = 7'b1000010; // "d"
+      4'b1110: SSeg = 7'b0110000; // "E"
+      4'b1111: SSeg = 7'b0111000; // "F"
+      default: SSeg = 0;
+    endcase
+  end
+
+endmodule
+´´´
+
 
 #### Diagrama de caja negra
 
