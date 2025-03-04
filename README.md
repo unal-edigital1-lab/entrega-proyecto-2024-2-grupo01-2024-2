@@ -2,7 +2,7 @@
 # Entrega 1 del proyecto WP01
 * Jose Luis Ocoro Banguera
 * Alejandro Jiménez Zabala
-* Mateo
+* Nicolas Mateo Guio M.
 
 ## Introducción
 Para la asignatura de Electrónica Digital I, hemos decidido desarrollar un Tamagotchi implementado en una FPGA. Este sistema nos permitirá simular la interacción y el cuidado de una mascota virtual mediante una combinación de sensores, botones y una interfaz visual sencilla pero efectiva.
