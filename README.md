@@ -378,7 +378,7 @@ endmodule
 
 Inicia definiendo entradas y salidas, los cuales serían los datos con los que se comunican el Master con el Slave, iniciando la transmisión de datos, habilitando o deshabilitando el encendido de la matriz, y almacenando los datos de salida.
 
-### Módulo de máquina de estados (matriz_caras2.v)
+### Módulo de máquina de estados (matriz_caras3.v)
 
 Se propone una máquina de estados para definir las expresiones que tendría la cara de nuestra mascota, lo que nos permitiría dividir el código de una forma comprensible para diferenciar los casos que podrían ser almacenados en la memoria.
 
@@ -392,7 +392,7 @@ module matriz_caras3 (
     	input [3:0] state,     // Datos de entrada para enviar
 	output  mosi,          // Master Out Slave In (Din)
     	output  sclk,          // Reloj SPI
-   	 output  cs            // Chip Select
+	output  cs            // Chip Select
 
   
 );
@@ -431,7 +431,7 @@ module matriz_caras3 (
 	reg [5:0] mem_index = 0;
 	 
 	reg sendByte;
-	reg [10:0]state_send=0;
+	reg [10:0] state_send=0;
 	reg [1:0] prev_state = 2'b00; 
 
 	
@@ -620,6 +620,8 @@ Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las p
 ![PIXILS](https://github.com/user-attachments/assets/463da43b-6ecd-430a-8b8a-a06dd97189aa)
 
 Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 17) a cada secuencia; para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
+
+Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior (prev_state), y así ejecuto el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
