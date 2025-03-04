@@ -45,7 +45,8 @@ Si la mascota pasa un tiempo prolongado sin detectar movimiento, entrará en est
 ### Interacciones del usuario
 Los usuarios podrán interactuar con la mascota a través la detección de movimiento mediante sensores. Estas interacciones afectarán los estados de la mascota, generando respuestas visuales en la matriz de LEDs y en el display de 7 segmentos.
 
-### Arquitectura del sistema
+## Arquitectura del sistema
+## Ultrasonido
 ### Módulo: BCDtoSSeg
 
 ### codigo: 
@@ -298,7 +299,13 @@ end
 ```
 Dado que trabajamos con un reloj de 50 MHz, esto nos dio una equivalencia de 5,000,000 ciclos.
 
-### Interacción entre Módulos:
+## Matriz 8x8
+
+### spi_master.v
+
+### matriz_caras2.v
+
+## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
 
 #### Diagrama de caja negra
