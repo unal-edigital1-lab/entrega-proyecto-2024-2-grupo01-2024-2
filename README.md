@@ -263,7 +263,7 @@ true_cm (salida, reg):
 * Contiene la distancia medida en centímetros.
 
 ### Funcionamiento Interno: 
-* # Generación del Pulso de Trigger (10 µs):
+### Generación del Pulso de Trigger (10 µs):
 Para que el sensor ultrasónico realice una medición, debemos enviar un pulso de al menos 10 µs en la señal trigger. Esto lo logramos con el siguiente código:
 ```verilog
 if (counter < 500) begin  
