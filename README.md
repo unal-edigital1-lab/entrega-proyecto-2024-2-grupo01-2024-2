@@ -309,18 +309,18 @@ Para el funcionamiento de la matriz se propone la implementación de dos módulo
 
 ```verilog
 module spi_master(
-   input clk,                // Reloj del sistema
-   input reset,              // Señal de reset
-   input [7:0] data_in,      // Datos de entrada para enviar
-   input start,              // Inicio de la transmisión
-   input [15:0] div_factor,   // Divisor del reloj para la velocidad SPI
-   input  miso,          // Master In Slave Out
-   output reg mosi,               // Master Out Slave In
-   output reg sclk,          // Reloj SPI
-   output reg cs,            // Chip Select
-   output reg [7:0] data_out, // Datos recibidos
-   output reg busy,          // Señal de ocupado
-   output reg avail  // Señal de dato recibido
+   input clk,                	// Reloj del sistema
+   input reset,              	// Señal de reset
+   input [7:0] data_in,      	// Datos de entrada para enviar
+   input start,              	// Inicio de la transmisión
+   input [15:0] div_factor,   	// Divisor del reloj para la velocidad SPI
+   input  miso,			// Master In Slave Out
+   output reg mosi,             // Master Out Slave In
+   output reg sclk,          	// Reloj SPI
+   output reg cs,            	// Chip Select
+   output reg [7:0] data_out, 	// Datos recibidos
+   output reg busy,          	// Señal de ocupado
+   output reg avail  		// Señal de dato recibido
 );
 
    reg [7:0] shift_reg;
@@ -386,13 +386,13 @@ Se propone una máquina de estados para definir las expresiones que tendría la 
 
 ```verilog
 
-module matriz_caras3 (
+module fsm_matriz8x8 (
 	input clk,             // Reloj del sistema
     	input reset,           // Señal de reset
-    	input [3:0] state,     // Datos de entrada para enviar
+    	input [1:0] state,     // Datos de entrada para enviar
 	output  mosi,          // Master Out Slave In (Din)
     	output  sclk,          // Reloj SPI
-	output  cs            // Chip Select
+	output  cs             // Chip Select
 
   
 );
@@ -492,58 +492,54 @@ module matriz_caras3 (
 	 reg [1:0] state_old;   
 	    // Detectar cambios en `state` y actualizar `memory4CommandSend`
     always @(posedge clk) begin
-        if (reset) begin
-            prev_state <= state; // Almacena el estado actual
             case (state)
                 2'b00: begin
-                    memory4CommandSend[10]  = patron1[0];
-                    memory4CommandSend[11]  = patron1[1] ;
-                    memory4CommandSend[12]  = patron1[2] ;
-                    memory4CommandSend[13]  = patron1[3] ;
-                    memory4CommandSend[14]  = patron1[4] ;
-                    memory4CommandSend[15]  = patron1[5] ;
-                    memory4CommandSend[16]  = patron1[6] ;
-                    memory4CommandSend[17]  = patron1[7] ;
+                    memory4CommandSend[11]  = patron1[0];
+                    memory4CommandSend[13]  = patron1[1] ;
+                    memory4CommandSend[15]  = patron1[2] ;
+                    memory4CommandSend[17]  = patron1[3] ;
+                    memory4CommandSend[19]  = patron1[4] ;
+                    memory4CommandSend[21]  = patron1[5] ;
+                    memory4CommandSend[23]  = patron1[6] ;
+                    memory4CommandSend[25]  = patron1[7] ;
 
                 end
                 2'b01: begin
-                    memory4CommandSend[10]  = patron2[0];
-                    memory4CommandSend[11]  = patron2[1] ;
-                    memory4CommandSend[12]  = patron2[2] ;
-                    memory4CommandSend[13]  = patron2[3] ;
-                    memory4CommandSend[14]  = patron2[4] ;
-                    memory4CommandSend[15]  = patron2[5] ;
-                    memory4CommandSend[16]  = patron2[6] ;
-                    memory4CommandSend[17]  = patron2[7] ;
+                    memory4CommandSend[11]  = patron2[0];
+                    memory4CommandSend[13]  = patron2[1] ;
+                    memory4CommandSend[15]  = patron2[2] ;
+                    memory4CommandSend[17]  = patron2[3] ;
+                    memory4CommandSend[19]  = patron2[4] ;
+                    memory4CommandSend[21]  = patron2[5] ;
+                    memory4CommandSend[23]  = patron2[6] ;
+                    memory4CommandSend[25]  = patron2[7] ;
 
                 end
                 2'b10: begin
-                    memory4CommandSend[10]  = patron3[0];
-                    memory4CommandSend[11]  = patron3[1] ;
-                    memory4CommandSend[12]  = patron3[2] ;
-                    memory4CommandSend[13]  = patron3[3] ;
-                    memory4CommandSend[14]  = patron3[4] ;
-                    memory4CommandSend[15]  = patron3[5] ;
-                    memory4CommandSend[16]  = patron3[6] ;
-                    memory4CommandSend[17]  = patron3[7] ;
+                    memory4CommandSend[11]  = patron3[0];
+                    memory4CommandSend[13]  = patron3[1] ;
+                    memory4CommandSend[15]  = patron3[2] ;
+                    memory4CommandSend[17]  = patron3[3] ;
+                    memory4CommandSend[19]  = patron3[4] ;
+                    memory4CommandSend[21]  = patron3[5] ;
+                    memory4CommandSend[23]  = patron3[6] ;
+                    memory4CommandSend[25]  = patron3[7] ;
 
                 end
             
                 2'b11: begin
-                    memory4CommandSend[10]  = patron4[0];
-                    memory4CommandSend[11]  = patron4[1] ;
-                    memory4CommandSend[12]  = patron4[2] ;
-                    memory4CommandSend[13]  = patron4[3] ;
-                    memory4CommandSend[14]  = patron4[4] ;
-                    memory4CommandSend[15]  = patron4[5] ;
-                    memory4CommandSend[16]  = patron4[6] ;
-                    memory4CommandSend[17]  = patron4[7] ;
+                    memory4CommandSend[11]  = patron4[0];
+                    memory4CommandSend[13]  = patron4[1] ;
+                    memory4CommandSend[15]  = patron4[2] ;
+                    memory4CommandSend[17]  = patron4[3] ;
+                    memory4CommandSend[19]  = patron4[4] ;
+                    memory4CommandSend[21]  = patron4[5] ;
+                    memory4CommandSend[23]  = patron4[6] ;
+                    memory4CommandSend[25]  = patron4[7] ;
 
                 end
                 
             endcase
-        
-        end
     end
 	
 	reg [1:0] c2=0;
@@ -551,12 +547,12 @@ module matriz_caras3 (
 	
    always @(posedge clk) begin
 		 if (~reset) begin
-           state_send <= 0;
-           sendByte <= 0;
-			  mem_index <= 0;
-       end else begin
-		 case (state_send)
-			0:	begin
+           		state_send <= 0;
+           		sendByte <= 0;
+			mem_index <= 0;
+       		end else begin
+		 	case (state_send)
+			0: begin
 				data_in <= memory4CommandSend[mem_index]; 
 				sendByte <=1; 
 				state_send <= 1;
@@ -569,7 +565,7 @@ module matriz_caras3 (
 				if (avail) begin
 					state_send <= 0;	
    				mem_index <= mem_index+1;
-					if (mem_index > 24)begin
+					if (mem_index > 25)begin
 						  mem_index <= 10;	
 						 state_send <= 3;	
   
@@ -585,7 +581,7 @@ module matriz_caras3 (
 				
 			end 
 			endcase
-			end
+		end
 	end
 
 	
@@ -675,9 +671,9 @@ Para validar el correcto funcionamiento de nuestro Tamagotchi en FPGA, realizamo
 
 ### Video de funcionamiento del prototipo final:
 
-https://youtu.be/SPrmNVi7oKs
+* Video de funcionamiento de la matriz 8x8: https://youtu.be/SPrmNVi7oKs
 
-https://youtu.be/hBTszNA_jm0
+* Video de funcionamiento de sensor ultrasonido: https://youtu.be/hBTszNA_jm0
 
 ## Plan de trabajo acordado 
 #### Semana 1 
