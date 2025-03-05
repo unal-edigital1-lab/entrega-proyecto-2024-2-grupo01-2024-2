@@ -559,7 +559,7 @@ module fsm_matriz8x8 (
 	
 	reg [1:0] c2=0;
 	
-	
+// Máquina de estados - Transmision de datos SPI	
    always @(posedge clk) begin
 		 if (~reset) begin
            		state_send <= 0;
@@ -633,6 +633,8 @@ Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las p
 Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 25) a cada secuencia, tenemos en cuenta que la posiciones en la memoria para la configuración de la matriz se organizan de manera intercalada, con la que llama una fila de la matriz, y la siguiente que la configura, por ejemplo la posicion 10 activa la fila 2 de la matriz, y la posicion 11 configura el encendido de los LEDS de dicha fila. Para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
 
 Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior, y que detecte un cambio de estado, para actualizar la memoria (state_old), y así ejecutar el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
+
+Se realizaron varias iteeraciones del código que aplica la maquina de estados para cambiar los patrones que se verían en la matriz, y aunque no se llega a un resultado satisfactorio, podemos ubicar la falla en la transmisión de datos por protocolo SPI, ya que como se ver{a en el video de los resultados más adelante, podremos notar que los datos son enviados a la matriz, pero falla en la circulación a través de los diferentes estados.
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
