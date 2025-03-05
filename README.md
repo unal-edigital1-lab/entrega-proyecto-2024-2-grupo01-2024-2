@@ -675,7 +675,9 @@ Para validar el correcto funcionamiento de nuestro Tamagotchi en FPGA, realizamo
 
 ### Video de funcionamiento del prototipo final:
 
+https://youtu.be/SPrmNVi7oKs
 
+https://youtu.be/hBTszNA_jm0
 
 ## Plan de trabajo acordado 
 #### Semana 1 
