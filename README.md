@@ -447,6 +447,21 @@ module fsm_matriz8x8 (
 	memory4CommandSend[8] = 8'h0F;  // Display Test 
         memory4CommandSend[9] = 8'h00;  // Display Test Value
 
+	//Patron de prueba de la matriz
+	memory4CommandSend[10] = 8'h02;
+        memory4CommandSend[11] = 8'hFF;
+        memory4CommandSend[12] = 8'h03;
+        memory4CommandSend[13] = 8'h7f;
+        memory4CommandSend[14] = 8'h04;
+        memory4CommandSend[15] = 8'h3c;
+        memory4CommandSend[16] = 8'h05;
+        memory4CommandSend[17] = 8'h55;
+        memory4CommandSend[18] = 8'h06;
+        memory4CommandSend[19] = 8'hAA;
+        memory4CommandSend[20] = 8'h07;
+        memory4CommandSend[21] = 8'h0f;
+        memory4CommandSend[22] = 8'h08;
+
 		
 	// Patrón 1 - Feliz
         patron1[0] = 8'b11111111;
@@ -566,8 +581,8 @@ module fsm_matriz8x8 (
 					state_send <= 0;	
    				mem_index <= mem_index+1;
 					if (mem_index > 25)begin
-						  mem_index <= 10;	
-						 state_send <= 3;	
+						mem_index <= 10;	
+						state_send <= 3;	
   
 					end
 				end
@@ -615,9 +630,9 @@ Accedemos a la memoria por medio de un arreglo "memory4CommandSend", entre las p
 
 ![PIXILS](https://github.com/user-attachments/assets/463da43b-6ecd-430a-8b8a-a06dd97189aa)
 
-Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 17) a cada secuencia; para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
+Separamos los casos en los que se genera cada patrón por separado, asignando un espacio de memoria (memory4CommandSend en posiciones 10 a 25) a cada secuencia, tenemos en cuenta que la posiciones en la memoria para la configuración de la matriz se organizan de manera intercalada, con la que llama una fila de la matriz, y la siguiente que la configura, por ejemplo la posicion 10 activa la fila 2 de la matriz, y la posicion 11 configura el encendido de los LEDS de dicha fila. Para finalizar con la maquina de estados, la cual envía los datos guardados en la memoria para que se puedan visualizar en la matriz.
 
-Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior (prev_state), y que detecte un cambio de estado, para actualizar la memoria (state_old), y así ejecutar el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
+Se hace que los cambios de estado tengan en cuenta la existencia de un "Reset" para que cambien los patrones en la matriz sin necesidad de resetear el sistema entero. Modificamos la lógica para que tenga en cuenta un estado anterior, y que detecte un cambio de estado, para actualizar la memoria (state_old), y así ejecutar el código que muestre un nuevo patrón cuando sea diferente al anterior (state_send).
 
 ## Interacción entre Módulos:
 Nuestro sistema está compuesto por varios módulos que trabajan juntos para simular el comportamiento de un Tamagotchi en la FPGA. A continuación, describimos cómo se relacionan entre sí y cómo logran el funcionamiento del sistema.
